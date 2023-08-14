@@ -6,13 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 
-email: string;
+export class LoginComponent {
+  email: string;
   password: string;
 
-export class LoginComponent {
-  
-
-  constructor() {}
+  constructor() {
+    this.email = "";
+    this.password = "";
+  }
 
   login() {
     console.log(this.email);
