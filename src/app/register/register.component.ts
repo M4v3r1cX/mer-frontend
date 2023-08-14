@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UsersService } from '../users/users.service';
 
 @Component({
   selector: 'app-register',
@@ -6,18 +7,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  nombre: string;
   email: string;
   password: string;
-  confirmPassword: string;
+  password2: string;
 
-  constructor() {
+  constructor(public userService: UsersService) {
+    this.nombre = "";
     this.email = "";
     this.password = "";
-    this.confirmPassword = "";
+    this.password2 = "";
   }
 
   register() {
-    console.log(this.email);
-    console.log(this.password);
+    const user = { nombre: this.nombre, password: this.password, password2: this.password2, email: this.email};
+    this.userService.register(user).subscribe((data) => {
+      console.log(data);
+    });
   }
 }
