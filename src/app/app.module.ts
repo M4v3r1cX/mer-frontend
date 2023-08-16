@@ -8,9 +8,10 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 import { routing } from './app.routing';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { LibromaintainerComponent } from './libromaintainer/libromaintainer.component';
+import { LoginComponent } from './mantenedores/usuarios/login/login.component';
+import { RegisterComponent } from './mantenedores/usuarios/register/register.component';
+import { LibromaintainerComponent } from './mantenedores/libros/libromaintainer/libromaintainer.component';
+import { AddlibroComponent } from './mantenedores/libros/addlibro/addlibro.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LibromaintainerComponent } from './libromaintainer/libromaintainer.comp
     NavbarComponent,
     LoginComponent,
     RegisterComponent,
-    LibromaintainerComponent
+    LibromaintainerComponent,
+    AddlibroComponent
   ],
   imports: [
     BrowserModule,

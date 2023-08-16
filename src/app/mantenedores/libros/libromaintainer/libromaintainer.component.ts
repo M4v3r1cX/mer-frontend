@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./libromaintainer.component.css']
 })
 export class LibromaintainerComponent {
-
+  libros: any = [];
 }

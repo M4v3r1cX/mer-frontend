@@ -1,0 +1,26 @@
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Libros</h1>
+        </div>
+        <div class="col-md-6">
+            <a href="/addlibro"><button class="btn btn-danger float-end">Crear Libro</button></a>
+        </div>
+    </div>
+    <div class="row">
+        <table>
+            <thead>
+                <th>Libro</th>
+                <th class="float-end">Opciones</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let libro of libros; let ilibro = index">
+                    <td>{{ libro.nombre }}</td>
+                    <td class="float-end"><button>Editar</button></td>
+                    <td class="float-end"><button>Eliminar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

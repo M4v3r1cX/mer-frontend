@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { environment } from '../../environments/environment';
+import { EntidadGenericaRequest } from "../models/EntidadGenericaRequest";
 
 @Injectable({
   providedIn: "root",
@@ -10,7 +11,7 @@ export class LibroService {
 
     constructor(private http: HttpClient){}
 
-    save(libro: any) {
+    save(libro: EntidadGenericaRequest) {
         return this.http.post(this.REST_URL + "libro/save", libro);
     }
 }
