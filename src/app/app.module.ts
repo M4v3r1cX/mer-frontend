@@ -12,6 +12,11 @@ import { LoginComponent } from './mantenedores/usuarios/login/login.component';
 import { RegisterComponent } from './mantenedores/usuarios/register/register.component';
 import { LibromaintainerComponent } from './mantenedores/libros/libromaintainer/libromaintainer.component';
 import { AddlibroComponent } from './mantenedores/libros/addlibro/addlibro.component';
+import { IndexComponent } from './index/index.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { DeletelibroComponent } from './mantenedores/libros/deletelibro/deletelibro.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +25,17 @@ import { AddlibroComponent } from './mantenedores/libros/addlibro/addlibro.compo
     LoginComponent,
     RegisterComponent,
     LibromaintainerComponent,
-    AddlibroComponent
+    AddlibroComponent,
+    IndexComponent,
+    DeletelibroComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    routing
+    routing,
+    NoopAnimationsModule,
+    MatDialogModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

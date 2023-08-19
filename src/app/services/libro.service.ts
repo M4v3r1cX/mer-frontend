@@ -14,4 +14,12 @@ export class LibroService {
     save(libro: EntidadGenericaRequest) {
         return this.http.post(this.REST_URL + "libro/save", libro);
     }
+
+    getLibros() {
+      return this.http.get(this.REST_URL + "libro/getAllLibros");
+    }
+
+    deleteLibro(id: number) {
+      return this.http.get(this.REST_URL + "libro/deleteLibro?id=" + id);
+    }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { EntidadGenericaRequest } from 'src/app/models/EntidadGenericaRequest';
 import { LibroService } from 'src/app/services/libro.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-addlibro',
@@ -11,7 +12,7 @@ export class AddlibroComponent {
   nombre: string;
   descripcion: string;
 
-  constructor(public libroService: LibroService) {
+  constructor(public libroService: LibroService, private router: Router) {
     this.nombre = "";
     this.descripcion = "";
   }
@@ -23,7 +24,7 @@ export class AddlibroComponent {
     console.log(request);
 
     this.libroService.save(request).subscribe((data: any) => {
-      console.log(data);
+      window.location.replace("/libros");
     });
   }
 }

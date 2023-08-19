@@ -4,9 +4,10 @@ import { RegisterComponent } from "./mantenedores/usuarios/register/register.com
 import { AppComponent } from "./app.component";
 import { LibromaintainerComponent } from "./mantenedores/libros/libromaintainer/libromaintainer.component";
 import { AddlibroComponent } from "./mantenedores/libros/addlibro/addlibro.component";
+import { IndexComponent } from "./index/index.component";
 
 const appRoutes = [
-    { path: "", component: AppComponent},
+    { path: "", component: IndexComponent},
     { path: "login", component: LoginComponent},
     { path: "register", component: RegisterComponent },
     { path: "libros", component: LibromaintainerComponent},
