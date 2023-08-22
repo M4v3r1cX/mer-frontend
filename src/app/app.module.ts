@@ -17,6 +17,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { DeletelibroComponent } from './mantenedores/libros/deletelibro/deletelibro.component';
+import { ActividadesmaintainerComponent } from './mantenedores/actividades/actividadesmaintainer/actividadesmaintainer.component';
+import { AddactividadComponent } from './mantenedores/actividades/addactividad/addactividad.component';
+import { DeleteactividadComponent } from './mantenedores/actividades/deleteactividad/deleteactividad.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { DeletelibroComponent } from './mantenedores/libros/deletelibro/deleteli
     LibromaintainerComponent,
     AddlibroComponent,
     IndexComponent,
-    DeletelibroComponent
+    DeletelibroComponent,
+    ActividadesmaintainerComponent,
+    AddactividadComponent,
+    DeleteactividadComponent
   ],
   imports: [
     BrowserModule,
