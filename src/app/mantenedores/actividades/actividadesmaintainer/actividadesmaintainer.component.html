@@ -31,18 +31,18 @@
         <div class="col-md-12">
             <table class="table" cellspacing="0">
                 <thead>
-                    <th>Actividad</th>
-                    <th>Red</th>
-                    <th>Nivel</th>
-                    <th>Libro</th>
-                    <th class="float-end">Opciones</th>
+                    <th class="col-md-2">Actividad</th>
+                    <th class="col-md-2">Red</th>
+                    <th class="col-md-2">Nivel</th>
+                    <th class="col-md-2">Libro</th>
+                    <th class="float-end col-md-4">Opciones</th>
                 </thead>
                 <tbody>
                     <tr *ngFor="let actividad of actividades">
-                        <td scope="row">{{ actividad.nombre }}</td>
-                        <td scope="row">{{ actividad.red }}</td>
-                        <td scope="row">{{ actividad.nivel }}</td>
-                        <td scope="row">{{ actividad.libro }}</td>
+                        <td scope="row" class="col-md-2">{{ actividad.nombre }}</td>
+                        <td scope="row" class="col-md-2">{{ actividad.red }}</td>
+                        <td scope="row" class="col-md-2">{{ actividad.nivel }}</td>
+                        <td scope="row" class="col-md-2">{{ actividad.libro }}</td>
                         <td class="float-end"><button class="btn btn-dark" mat-raised-button><i class="bi bi-pencil"></i> Ver/Editar</button></td>
                         <td class="float-end"><button class="btn btn-dark" mat-raised-button (click)="openDialogConfirmDelete(actividad.id, actividad.nombre);"><i class="bi bi-trash"></i> Eliminar</button></td>
                     </tr>

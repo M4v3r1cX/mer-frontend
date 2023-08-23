@@ -1,1 +1,165 @@
-<p>addactividad works!</p>
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+          <h1 mat-dialog-title>Agregar Actividad</h1>
+        </div>
+    </div>
+    <br />
+    <mat-dialog-content>
+    <form class="custom-form mx-auto" method="post">
+        <div class="row">
+            <div class="col-md-6">
+              <label for="red" name="redLabel" class="float-end">
+                Elija una Red
+              </label>
+            </div>
+            <div class="col-md-6">
+                <select [(ngModel)]="dto.idRed" class="col-md-6" name="idRed">
+                    <option *ngFor="let r of redes" [ngValue]="r.id">{{r.nombre}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+              <label for="nivel" name="nivelLabel" class="float-end">
+                Aligamientos al nivel
+              </label>
+            </div>
+            <div class="col-md-6">
+                <select [(ngModel)]="dto.idNivel" class="col-md-6" name="idNivel">
+                    <option *ngFor="let n of niveles" [ngValue]="n">{{n}}º</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+              <label for="libro" name="libroLabel" class="float-end">
+                Libro de Referencia
+              </label>
+            </div>
+            <div class="col-md-6">
+                <select [(ngModel)]="dto.idLibro" class="col-md-6" name="idLibro">
+                    <option *ngFor="let l of libros" [ngValue]="l.id">{{l.nombre}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label for="txtCajaOa" name="txtCajaOaLabel" class="float-end">
+                Texto caja OA Capa 2
+            </label>
+            </div>
+            <div class="col-md-6">
+            <input
+            type="text"
+            [(ngModel)]="dto.textoCajaOaCapa2"
+            name="txtCajaOa"
+            placeholder=""
+            required="required" class="col-md-6"
+            />
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+          <label for="txtCajaTm" name="txtCajaTmLabel" class="float-end">
+              Texto caja TM Capa 2
+          </label>
+          </div>
+          <div class="col-md-6">
+          <input
+          type="text"
+          [(ngModel)]="dto.textoCajaTmCapa2"
+          name="txtCajaTm"
+          placeholder=""
+          required="required" class="col-md-6"
+          />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+          <label for="ubicacionEnLibro" name="ubicacionEnLibroLabel" class="float-end">
+              Descripción, Texto, Volumen, Página
+          </label>
+          </div>
+          <div class="col-md-6">
+          <input
+          type="text"
+          [(ngModel)]="dto.ubicacionEnLibro"
+          name="ubicacionEnLibro"
+          placeholder=""
+          required="required" class="col-md-6"
+          />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+          <label for="descripcionActividad" name="descripcionActividadLabel" class="float-end">
+              Descripción de la Actividad
+          </label>
+          </div>
+          <div class="col-md-6">
+          <input
+          type="text"
+          [(ngModel)]="dto.descripcionActividad"
+          name="descripcionActividad"
+          placeholder=""
+          required="required" class="col-md-6"
+          />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+          <label for="linkReferencia" name="linkReferenciaLabel" class="float-end">
+              Link de Referencia
+          </label>
+          </div>
+          <div class="col-md-6">
+          <input
+          type="text"
+          [(ngModel)]="dto.linkReferencia"
+          name="linkReferencia"
+          placeholder=""
+          required="required" class="col-md-6"
+          />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+          <label for="imagenReferencia" name="imagenReferenciaLabel" class="float-end">
+              Imagen de Referencia
+          </label>
+          </div>
+          <div class="col-md-6">
+            <input type="file" (change)="CreateBase64String($event)" class="fileInputProfile form-control"  class="col-md-6">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label for="nombre" name="nombreLabel" class="float-end">
+                Nombre
+            </label>
+            </div>
+            <div class="col-md-6">
+            <input
+            type="text"
+            [(ngModel)]="dto.nombre"
+            name="nombre"
+            placeholder="Nombre"
+            required="required" class="col-md-6"
+            />
+            </div>
+        </div>
+      
+      <br />
+      <div class="row">
+        <div class="col-md-6">
+          <button class="btn btn-dark float-end" type="submit" (click)="guardarActividad()"><i class="bi bi-save"></i> Guardar Actividad</button>
+        </div>
+        <div class="col-md-6">
+          <button mat-button mat-dialog-close class="btn btn-danger" type="submit"><i class="bi bi-x"></i> Cancelar</button>
+        </div>
+      </div>
+      </form>
+    </mat-dialog-content>
+</div>

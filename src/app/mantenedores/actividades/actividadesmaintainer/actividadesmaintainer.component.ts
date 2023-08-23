@@ -18,13 +18,14 @@ export class ActividadesmaintainerComponent {
   ngOnInit() {
     this.actividadService.getActividades().subscribe((data:any)=>{
       this.actividades = data.actividades;
+      console.log(data.actividades);
     });
   }
 
   openDialogAddActividad() {
     const dialogRef = this.dialog.open(AddactividadComponent, {
-      height: '700px',
-      width: '500px',
+      height: '60%',
+      width: '70%',
     });
 
     dialogRef.afterClosed().subscribe(result => {

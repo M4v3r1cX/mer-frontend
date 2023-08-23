@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { environment } from '../../environments/environment';
 import { EntidadGenericaRequest } from "../models/EntidadGenericaRequest";
+import { ActividadMerDTO } from "../models/ActividadMerDTO";
 
 @Injectable({
     providedIn: "root",
@@ -12,8 +13,8 @@ import { EntidadGenericaRequest } from "../models/EntidadGenericaRequest";
 
     constructor(private http: HttpClient){}
 
-    save(libro: EntidadGenericaRequest) {
-        return this.http.post(this.REST_URL + "actividadmer/save", libro);
+    save(actividad: ActividadMerDTO) {
+        return this.http.post(this.REST_URL + "actividadmer/save", actividad);
     }
 
     getActividades() {
@@ -22,5 +23,9 @@ import { EntidadGenericaRequest } from "../models/EntidadGenericaRequest";
 
     deleteActividad(id: number) {
       return this.http.get(this.REST_URL + "actividadmer/deleteActividad?id=" + id);
+    }
+
+    getLibrosYRedes() {
+      return this.http.get(this.REST_URL + "actividadmer/getLibrosYRedes");
     }
   }
