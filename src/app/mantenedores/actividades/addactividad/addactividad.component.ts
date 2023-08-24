@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActividadMerDTO } from 'src/app/models/ActividadMerDTO';
 import { ActividadService } from 'src/app/services/actividad.service';
+import { Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-addactividad',
@@ -12,6 +14,8 @@ export class AddactividadComponent {
   libros: any = [];
   redes: any = [];
   niveles: any = [];
+  titulo: string = "";
+  idActividad: string = "";
 
   ngOnInit() {
     this.actividadService.getLibrosYRedes().subscribe((data:any)=>{
@@ -24,7 +28,15 @@ export class AddactividadComponent {
     this.niveles = ["1","2","3","4","5","6"];
   }
 
-  constructor(public actividadService: ActividadService) {
+  constructor(public actividadService: ActividadService, @Inject(MAT_DIALOG_DATA) public data: string) {
+    var spl = data.split(',');
+    this.titulo = spl[0];
+    this.idActividad = spl[1];
+    if (this.idActividad !== '-1') {
+      this.actividadService.getActividad(this.idActividad).subscribe((data: any) => {
+        this.dto = data;
+      });
+    }
     this.dto = new ActividadMerDTO;
   }
 

@@ -28,4 +28,8 @@ import { ActividadMerDTO } from "../models/ActividadMerDTO";
     getLibrosYRedes() {
       return this.http.get(this.REST_URL + "actividadmer/getLibrosYRedes");
     }
+
+    getActividad(id: string) {
+      return this.http.get(this.REST_URL + "actividadmer/getActividad?id=" + id);
+    }
   }

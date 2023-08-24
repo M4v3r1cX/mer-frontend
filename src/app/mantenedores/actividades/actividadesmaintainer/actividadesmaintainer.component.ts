@@ -24,8 +24,21 @@ export class ActividadesmaintainerComponent {
 
   openDialogAddActividad() {
     const dialogRef = this.dialog.open(AddactividadComponent, {
-      height: '60%',
+      height: '70%',
       width: '70%',
+      data: 'Agregar Actividad,-1'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openDialogEditActividad(id: number) {
+    const dialogRef = this.dialog.open(AddactividadComponent, {
+      height: '70%',
+      width: '70%',
+      data: 'Editar Actividad,' + id
     });
 
     dialogRef.afterClosed().subscribe(result => {
