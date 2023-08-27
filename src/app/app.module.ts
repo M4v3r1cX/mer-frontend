@@ -20,6 +20,7 @@ import { DeletelibroComponent } from './mantenedores/libros/deletelibro/deleteli
 import { ActividadesmaintainerComponent } from './mantenedores/actividades/actividadesmaintainer/actividadesmaintainer.component';
 import { AddactividadComponent } from './mantenedores/actividades/addactividad/addactividad.component';
 import { DeleteactividadComponent } from './mantenedores/actividades/deleteactividad/deleteactividad.component';
+import { OamaintainerComponent } from './mantenedores/oa/oamaintainer/oamaintainer.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { DeleteactividadComponent } from './mantenedores/actividades/deleteactiv
     DeletelibroComponent,
     ActividadesmaintainerComponent,
     AddactividadComponent,
-    DeleteactividadComponent
+    DeleteactividadComponent,
+    OamaintainerComponent
   ],
   imports: [
     BrowserModule,

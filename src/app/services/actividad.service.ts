@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { environment } from '../../environments/environment';
-import { EntidadGenericaRequest } from "../models/EntidadGenericaRequest";
 import { ActividadMerDTO } from "../models/ActividadMerDTO";
 
 @Injectable({
