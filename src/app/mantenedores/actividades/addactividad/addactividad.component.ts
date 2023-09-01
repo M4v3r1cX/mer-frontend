@@ -32,12 +32,12 @@ export class AddactividadComponent {
     var spl = data.split(',');
     this.titulo = spl[0];
     this.idActividad = spl[1];
+    this.dto = new ActividadMerDTO;
     if (this.idActividad !== '-1') {
       this.actividadService.getActividad(this.idActividad).subscribe((data: any) => {
         this.dto = data;
       });
     }
-    this.dto = new ActividadMerDTO;
   }
 
   guardarActividad() {

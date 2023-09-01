@@ -6,6 +6,7 @@ import { LibromaintainerComponent } from "./mantenedores/libros/libromaintainer/
 import { ActividadesmaintainerComponent } from "./mantenedores/actividades/actividadesmaintainer/actividadesmaintainer.component";
 import { IndexComponent } from "./index/index.component";
 import { OamaintainerComponent } from "./mantenedores/oa/oamaintainer/oamaintainer.component";
+import { AddoaComponent } from "./mantenedores/oa/addoa/addoa.component";
 
 const appRoutes = [
     { path: "", component: IndexComponent},
@@ -13,7 +14,8 @@ const appRoutes = [
     { path: "register", component: RegisterComponent },
     { path: "libros", component: LibromaintainerComponent},
     { path: "actividades", component: ActividadesmaintainerComponent},
-    { path: "oas", component: OamaintainerComponent }
+    { path: "oas", component: OamaintainerComponent },
+    { path: "oas/add", component: AddoaComponent }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

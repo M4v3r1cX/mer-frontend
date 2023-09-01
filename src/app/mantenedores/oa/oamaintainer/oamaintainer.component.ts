@@ -23,7 +23,7 @@ export class OamaintainerComponent {
   }
 
   openDialogAddOa() {
-    const dialogRef = this.dialog.open(AddoaComponent, {
+    /*const dialogRef = this.dialog.open(AddoaComponent, {
       height: '70%',
       width: '70%',
       data: 'Agregar Objetivo Académico,-1'
@@ -31,7 +31,8 @@ export class OamaintainerComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
-    });
+    });*/
+    window.location.replace("/oas/add");
   }
 
   openDialogEditOa(id: number) {

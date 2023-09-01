@@ -24,8 +24,8 @@ import { OaDTO } from "../models/OaDTO";
       return this.http.get(this.REST_URL + "oa/deleteOa?id=" + id);
     }
 
-    getLibrosYRedes() {
-      return this.http.get(this.REST_URL + "actividadmer/getLibrosYRedes");
+    getRedes() {
+      return this.http.get(this.REST_URL + "oa/getRedes");
     }
 
     getOa(id: string) {

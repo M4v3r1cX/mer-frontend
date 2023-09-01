@@ -1,15 +1,19 @@
+import { OaHijoDTO } from "./OaHijoDTO";
+
 export class OaDTO {
-    id: string;
-    nombre: string;
+    codigo: string;
     descripcion: string;
-    idRed: string;
-    idNivel: string;
+    redes: string[];
+    niveles: string[];
+    prioridad: boolean;
+    hijos: OaHijoDTO[];
 
     constructor() {
-        this.id = "";
-        this.nombre = "";
+        this.codigo = "";
         this.descripcion = "";
-        this.idRed = "";
-        this.idNivel = "";
+        this.redes = [];
+        this.niveles = [];
+        this.prioridad = false;
+        this.hijos = [];
     }
 }
