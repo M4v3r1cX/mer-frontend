@@ -13,7 +13,7 @@ import { OaDTO } from "../models/OaDTO";
     constructor(private http: HttpClient){}
 
     save(oa: OaDTO) {
-      return this.http.post(this.REST_URL + "/oa/save", oa);
+      return this.http.post(this.REST_URL + "oa/save", oa);
     }
 
     getOas() {

@@ -37,16 +37,17 @@
         <div class="col-md-12">
             <table class="table" cellspacing="0">
                 <thead>
-                    <th class="col-md-2">Actividad</th>
+                    <th class="col-md-2">OA</th>
                     <th class="col-md-2">Red</th>
                     <th class="col-md-2">Nivel</th>
                     <th class="float-end col-md-4">Opciones</th>
                 </thead>
                 <tbody>
                     <tr *ngFor="let oa of oas">
-                        <td scope="row" class="col-md-2">{{ oa.nombre }}</td>
+                        <td scope="row" class="col-md-2">{{ oa.nombre }} <i class="bi bi-star-fill" *ngIf="oa.prioridad == true"></i></td>
                         <td scope="row" class="col-md-2">{{ oa.red }}</td>
                         <td scope="row" class="col-md-2">{{ oa.nivel }}</td>
+                        <td class="float-end"><button class="btn btn-dark" mat-raised-button (click)="openDialogEditOa(oa.id);"><i class="bi bi-eye-fill"></i> Ver Hijos</button></td>
                         <td class="float-end"><button class="btn btn-dark" mat-raised-button (click)="openDialogEditOa(oa.id);"><i class="bi bi-pencil"></i> Ver/Editar</button></td>
                         <td class="float-end"><button class="btn btn-dark" mat-raised-button (click)="openDialogConfirmDelete(oa.id, oa.nombre);"><i class="bi bi-trash"></i> Eliminar</button></td>
                     </tr>

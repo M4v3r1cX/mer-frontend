@@ -108,13 +108,74 @@
               </mat-radio-group>
               </div>
           </div>
-          <div class="row">
-            <button class="btn btn-dark float-center col-md-2" (click)="agregarDiv()"><i class="bi bi-plus"></i> Agregar OA Hijo</button>
+          <div *ngFor="let hijo of dto.hijos; let idxHijo = index">
+            <br />
+            <div class="col-md-12">
+              <hr >
+              <div class="">
+                <div class="row">
+                  <div class="col-md-6">
+                    <label for="descripcionOaHijo" name="descripcionOaHijoLabel" class="float-end">
+                        Descripción hijo {{idxHijo + 1}}
+                    </label>
+                    </div>
+                    <div class="col-md-6">
+                      <textarea
+                    [(ngModel)]="dto.hijos[idxHijo].descripcion"
+                    name="codigo"
+                    placeholder="OA-99"
+                    required="required" class="col-md-6"
+                    ></textarea>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label for="red" name="redLabel" class="float-end">
+                        Elija las redes en las que estará disponible el OA Hijo
+                      </label>
+                    </div>
+                    <div class="col-md-6">
+                        <div *ngFor="let chk of redes; let idxRedHijo = index" class="col-md-6">
+                          <label>
+                            <mat-checkbox [value]="chk.id" (change)="onCheckRedHijoChange($event, idxHijo)" />
+                            {{chk.nombre}}
+                          </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                      <label for="nivel" name="nivelLabel" class="float-end">
+                        Eliga los Niveles en los que el OA estará disponible
+                      </label>
+                    </div>
+                    <div class="col-md-6">
+                      <div *ngFor="let chk of niveles; let i = index" class="col-md-6">
+                        <label>
+                          <mat-checkbox [value]="chk" (change)="onCheckNvlHijoChange($event, idxHijo)" />
+                          {{chk}}º
+                        </label>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-md-12">
+                <div class="d-flex justify-content-center">
+                  <button class="btn btn-danger float-center col-md-2" (click)="quitarHijo(idxHijo)"><i class="bi bi-trash"></i> Eliminar Hijo</button>
+                </div>
+              </div>
+            </div>
+            <br />
           </div>
-          <div *ngFor="let new_div of divs;">
-
-            <p>This is a new Divisons</p>
-            
+          <div class="row">
+            <div class="col-md-12">
+              <div class="d-flex justify-content-center">
+                <button class="btn btn-dark float-center col-md-2" (click)="agregarHijo()"><i class="bi bi-plus"></i> Agregar OA Hijo</button>
+              </div>
+            </div>
           </div>
         <br />
         <div class="row">
@@ -126,4 +187,5 @@
           </div>
         </div>
         </form>
+        <br />
 </div>

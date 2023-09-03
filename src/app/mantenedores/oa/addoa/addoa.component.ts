@@ -4,6 +4,7 @@ import { Inject } from '@angular/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import { OaService } from 'src/app/services/oa.service';
+import { OaHijoDTO } from 'src/app/models/OaHijoDTO';
 
 @Component({
   selector: 'app-addoa',
@@ -15,7 +16,6 @@ export class AddoaComponent {
   redes: any = [];
   niveles: any = [];
   libros: any = [];
-  divs: divs[] = [];
 
   ngOnInit() {
     this.oaService.getRedes().subscribe((data:any)=>{
@@ -64,13 +64,49 @@ export class AddoaComponent {
     });
   }
 
-  agregarDiv() {
-    this.divs.push(new divs());
+  agregarHijo() {
+    let oa: OaHijoDTO = new OaHijoDTO();
+    /*if (this.dto.niveles.length > 0) {
+      this.dto.niveles.forEach((r: string) => {
+        oa.niveles.push(r);
+      });
+    }
+    if (this.dto.redes.length > 0) {
+      this.dto.redes.forEach((r: string) => {
+        oa.redes.push(r);
+      });
+    }*/
+    this.dto.hijos.push(oa);
   }
 
-  
-}
+  onCheckRedHijoChange(event: any, idx: number) {
+    console.log(this.dto.hijos);
+    if(event.checked) {
+      this.dto.hijos[idx].redes.push(event.source.value);
+    } else {
+      this.dto.hijos[idx].redes.forEach((r: string, index) => {
+        if (r == event.source.value) {
+          this.dto.hijos[idx].redes.splice(index, 1);
+        }
+      });
+    }
+  }
 
-export class divs {
-    
+  onCheckNvlHijoChange(event: any, idx: number) {
+    console.log(this.dto.hijos);
+    if(event.checked) {
+      this.dto.hijos[idx].niveles.push(event.source.value);
+    } else {
+      this.dto.hijos[idx].niveles.forEach((r: string, index) => {
+        if (r == event.source.value) {
+          this.dto.hijos[idx].niveles.splice(index, 1);
+        }
+      });
+    }
+  }
+
+  quitarHijo(idx: number) {
+    this.dto.hijos.splice(idx, 1);
+  }
+  
 }
