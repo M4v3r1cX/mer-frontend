@@ -25,6 +25,7 @@ import { AddactividadComponent } from './mantenedores/actividades/addactividad/a
 import { DeleteactividadComponent } from './mantenedores/actividades/deleteactividad/deleteactividad.component';
 import { OamaintainerComponent } from './mantenedores/oa/oamaintainer/oamaintainer.component';
 import { AddoaComponent } from './mantenedores/oa/addoa/addoa.component';
+import { ViewoahijoComponent } from './mantenedores/oa/viewoahijo/viewoahijo.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AddoaComponent } from './mantenedores/oa/addoa/addoa.component';
     AddactividadComponent,
     DeleteactividadComponent,
     OamaintainerComponent,
-    AddoaComponent
+    AddoaComponent,
+    ViewoahijoComponent
   ],
   imports: [
     BrowserModule,

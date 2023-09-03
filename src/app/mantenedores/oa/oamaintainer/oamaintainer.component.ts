@@ -4,6 +4,7 @@ import { DeleteoaComponent } from '../deleteoa/deleteoa.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { OaService } from 'src/app/services/oa.service';
+import { ViewoahijoComponent } from '../viewoahijo/viewoahijo.component';
 
 @Component({
   selector: 'app-oamaintainer',
@@ -44,6 +45,14 @@ export class OamaintainerComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openDialogVerHijosOa(id: number, codigo: string) {
+    const dialogRef = this.dialog.open(ViewoahijoComponent, {
+      height: '70%',
+      width: '70%',
+      data: codigo + ',' + id
     });
   }
 

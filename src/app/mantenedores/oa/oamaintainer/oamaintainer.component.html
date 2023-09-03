@@ -39,19 +39,19 @@
                 <thead>
                     <tr>
                         <th class="col-md-2" scope="col">OA</th>
-                        <th class="col-md-2" scope="col">Red</th>
-                        <th class="col-md-2" scope="col">Nivel</th>
-                        <th class="float-end col-md-4" scope="col">Opciones</th>
+                        <th class="col-md-4" scope="col">Red</th>
+                        <th class="col-md-4" scope="col">Nivel</th>
+                        <th scope="col">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let oa of oas">
                         <th scope="row" class="col-md-2">{{ oa.codigo }} <i class="bi bi-star-fill" *ngIf="oa.prioridad == true"></i></th>
-                        <td class="col-md-2"><p *ngFor="let red of oa.redes"><i class="bi bi-dot"></i> {{red}}</p></td>
-                        <td class="col-md-2"><p *ngFor="let nivel of oa.niveles"><i class="bi bi-dot"></i> {{nivel}}</p></td>
-                        <td class="float-end"><button class="btn btn-dark" mat-raised-button (click)="openDialogEditOa(oa.id);"><i class="bi bi-eye-fill"></i> Ver Hijos</button></td>
-                        <td class="float-end"><button class="btn btn-dark" mat-raised-button (click)="openDialogEditOa(oa.id);"><i class="bi bi-pencil"></i> Ver/Editar</button></td>
-                        <td class="float-end"><button class="btn btn-dark" mat-raised-button (click)="openDialogConfirmDelete(oa.id, oa.nombre);"><i class="bi bi-trash"></i> Eliminar</button></td>
+                        <td class="col-md-4"><p *ngFor="let red of oa.redes"><i class="bi bi-dot"></i> {{red}}</p></td>
+                        <td class="col-md-4"><p *ngFor="let nivel of oa.niveles"><i class="bi bi-dot"></i> {{nivel}}</p></td>
+                        <td><button class="btn btn-dark" mat-raised-button (click)="openDialogVerHijosOa(oa.id, oa.codigo);"><i class="bi bi-eye-fill"></i> Ver Hijos</button></td>
+                        <td><button class="btn btn-dark" mat-raised-button (click)="openDialogEditOa(oa.id);"><i class="bi bi-pencil"></i> Ver/Editar</button></td>
+                        <td><button class="btn btn-dark" mat-raised-button (click)="openDialogConfirmDelete(oa.id, oa.nombre);"><i class="bi bi-trash"></i> Eliminar</button></td>
                     </tr>
                 </tbody>
             </table>

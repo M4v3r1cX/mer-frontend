@@ -31,4 +31,8 @@ import { OaDTO } from "../models/OaDTO";
     getOa(id: string) {
       return this.http.get(this.REST_URL + "oa/getOa?id=" + id);
     }
+
+    getHijosOa(id: string) {
+      return this.http.get(this.REST_URL + "oa/getHijos?id=" + id);
+    }
   }
