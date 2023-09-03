@@ -99,13 +99,11 @@
               </label>
               </div>
               <div class="col-md-6">
-                <mat-radio-group
-                aria-labelledby="prioridad"
-                class="prioridad"
-                [(ngModel)]="dto.prioridad">
-                <mat-radio-button value="true" checked="true">Si</mat-radio-button>
-                <mat-radio-button value="false">no</mat-radio-button>
-              </mat-radio-group>
+                <div class="col-md-6">
+                  <label>
+                    <mat-checkbox (change)="onCheckPriorizadoChange($event)" />
+                  </label>
+                </div>
               </div>
           </div>
           <div *ngFor="let hijo of dto.hijos; let idxHijo = index">

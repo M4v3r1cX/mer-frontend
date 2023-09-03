@@ -58,6 +58,14 @@ export class AddoaComponent {
     }
   }
 
+  onCheckPriorizadoChange(event: any) {
+    if(event.checked) {
+      this.dto.prioridad = true;
+    } else {
+      this.dto.prioridad = false;
+    }
+  }
+
   guardarOa() {
     this.oaService.save(this.dto).subscribe((data: any) => {
       window.location.replace("/oas");
