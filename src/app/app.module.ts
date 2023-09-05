@@ -26,6 +26,9 @@ import { DeleteactividadComponent } from './mantenedores/actividades/deleteactiv
 import { OamaintainerComponent } from './mantenedores/oa/oamaintainer/oamaintainer.component';
 import { AddoaComponent } from './mantenedores/oa/addoa/addoa.component';
 import { ViewoahijoComponent } from './mantenedores/oa/viewoahijo/viewoahijo.component';
+import { TmmaintainerComponent } from './mantenedores/tm/tmmaintainer/tmmaintainer.component';
+import { AddtmComponent } from './mantenedores/tm/addtm/addtm.component';
+import { DeletetmComponent } from './mantenedores/tm/deletetm/deletetm.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { ViewoahijoComponent } from './mantenedores/oa/viewoahijo/viewoahijo.com
     DeleteactividadComponent,
     OamaintainerComponent,
     AddoaComponent,
-    ViewoahijoComponent
+    ViewoahijoComponent,
+    TmmaintainerComponent,
+    AddtmComponent,
+    DeletetmComponent
   ],
   imports: [
     BrowserModule,
