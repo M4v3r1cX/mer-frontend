@@ -29,6 +29,7 @@ import { ViewoahijoComponent } from './mantenedores/oa/viewoahijo/viewoahijo.com
 import { TmmaintainerComponent } from './mantenedores/tm/tmmaintainer/tmmaintainer.component';
 import { AddtmComponent } from './mantenedores/tm/addtm/addtm.component';
 import { DeletetmComponent } from './mantenedores/tm/deletetm/deletetm.component';
+import { FilterPipe } from './services/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { DeletetmComponent } from './mantenedores/tm/deletetm/deletetm.component
     ViewoahijoComponent,
     TmmaintainerComponent,
     AddtmComponent,
-    DeletetmComponent
+    DeletetmComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

@@ -27,5 +27,9 @@ export class TmService {
     deleteTm(id: number) {
         return this.http.get(this.REST_URL + "tm/deleteTm?id=" + id);
     }
+
+    getOaTm() {
+        return this.http.get(this.REST_URL + "tm/getAllOaTms");
+    }
     
 }

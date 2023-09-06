@@ -1,11 +1,11 @@
 export class TMDto {
-    id: number;
+    id: string;
     descripcion: string;
     idOa: string;
     codigoOa: string;
 
     constructor() {
-        this.id = 0;
+        this.id = "";
         this.descripcion = "";
         this.idOa = "";
         this.codigoOa = "";

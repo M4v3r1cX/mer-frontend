@@ -23,14 +23,41 @@ export class TmmaintainerComponent {
   }
 
   openDialogAddTm() {
+    const dialogRef = this.dialog.open(AddtmComponent, {
+      height: '70%',
+      width: '70%',
+      data: 'Agregar Tarea Matemática,-1'
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   openDialogEditTm(id: number) {
+    const dialogRef = this.dialog.open(AddtmComponent, {
+      height: '70%',
+      width: '70%',
+      data: 'Editar Tarea Matemática,' + id
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   openDialogConfirmDelete(id: number) {
-    
+    console.log(id);
+    const dialogRef = this.dialog.open(DeletetmComponent, {
+      data: "TM-" + id
+    });
+
+    dialogRef.afterClosed().subscribe((eliminar: Boolean) => {
+      if(eliminar) {
+        this.tmService.deleteTm(id).subscribe((data: any) => {
+          window.location.replace("/tms");
+        });
+      }
+    });
   }
 }

@@ -1,1 +1,56 @@
-<p>addtm works!</p>
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="col-md-6">
+            <h1><b>Agregar Tarea Matemática</b></h1>
+        </div>
+    </div>
+    <br />
+    <form class="custom-form mx-auto" method="post">
+          <div class="row">
+            <div class="col-md-6">
+              <label for="txtDescripcion" name="txtDescripcionLabel" class="float-end">
+                  Descripción
+              </label>
+              </div>
+              <div class="col-md-6">
+              <textarea
+              [(ngModel)]="dto.descripcion"
+              name="txtDescripcion"
+              placeholder=""
+              required="required" class="col-md-6"
+              ></textarea>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label for="txtOa" name="txtOaLabel" class="float-end">
+                Objetivo de Aprendizaje al que pertenece
+              </label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" name="search" id="search" [ngModel]="searchText" (ngModelChange)="searchKey($event)" placeholder="Buscar por código..." ngModel>
+              
+              <div class="col-md-6">
+                <mat-radio-group
+                  aria-labelledby="example-radio-group-label"
+                  class="example-radio-group"
+                  [(ngModel)]="idOa">
+                  <mat-radio-button class="example-radio-button" *ngFor="let o of oasFiltrados" [value]="o.codigo">
+                    {{o.codigo}}: {{o.descripcion}}
+                  </mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+          </div>
+        <div class="row">
+          <div class="col-md-6">
+            <button class="btn btn-dark float-end" type="submit" (click)="guardarTm()"><i class="bi bi-save"></i> Guardar OA</button>
+          </div>
+          <div class="col-md-6">
+            <button mat-button mat-dialog-close class="btn btn-danger" type="submit"><i class="bi bi-x"></i> Cancelar</button>
+          </div>
+        </div>
+        </form>
+        <br />
+</div>
