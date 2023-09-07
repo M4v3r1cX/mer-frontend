@@ -37,14 +37,16 @@
                 <thead>
                     <tr>
                         <th class="col-md-2" scope="col">TM</th>
+                        <th class="col-md-2" scope="col">Descripcion</th>
                         <th class="col-md-4" scope="col">OA</th>
-                        <th scope="col">Opciones</th>
+                        <th scope="col-md-4">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let tm of tms">
-                        <th scope="row" class="col-md-2">{{ tm.descripcion }}</th>
-                        <td> {{ tm.codigoOa }}</td>
+                        <th scope="row" class="col-md-2">TM-{{tm.id}}</th>
+                        <td>{{ tm.descripcion }}</td>
+                        <td>{{ tm.codigoOa }}</td>
                         <td><button class="btn btn-dark" mat-raised-button (click)="openDialogEditTm(tm.id);"><i class="bi bi-pencil"></i> Ver/Editar</button></td>
                         <td><button class="btn btn-dark" mat-raised-button (click)="openDialogConfirmDelete(tm.id);"><i class="bi bi-trash"></i> Eliminar</button></td>
                     </tr>

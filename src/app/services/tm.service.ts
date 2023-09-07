@@ -20,7 +20,7 @@ export class TmService {
         return this.http.get(this.REST_URL + "tm/getAllTms");
     }
 
-    getTm(id: number) {
+    getTm(id: string) {
         return this.http.get(this.REST_URL + "tm/getTm?id=" + id);
     }
   

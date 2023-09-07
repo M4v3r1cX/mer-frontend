@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TMDto } from 'src/app/models/TMDto';
 import { Inject } from '@angular/core';
 import { TmService } from 'src/app/services/tm.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-addtm',
@@ -14,17 +15,27 @@ export class AddtmComponent {
   searchText = "";
   idOa = "";
   oasFiltrados: any = [];
+  titulo: string = "";
+  idTm: string = "";
 
   ngOnInit() {
   }
 
-  constructor(public tmService: TmService) {
+  constructor(public tmService: TmService, @Inject(MAT_DIALOG_DATA) public data: string) {
     this.dto = new TMDto();
+    var spl = data.split(',');
+    this.titulo = spl[0];
+    this.idTm = spl[1];
     this.tmService.getOaTm().subscribe((data: any) => {
       console.log(data);
       this.oas = data;
       this.search();
     });
+    if (this.idTm !== '-1') {
+      this.tmService.getTm(this.idTm).subscribe((data: any) => {
+        this.dto = data;
+      });
+    }
   }
 
   searchKey(data: string) {
@@ -37,15 +48,19 @@ export class AddtmComponent {
   search() {
     console.log('search');
     this.oasFiltrados = this.searchText === ""? this.oas : this.oas.filter((element: any) => {
-      //return element.codigo.toLowerCase() == this.searchText.toLowerCase();
-      return element.codigo.toLowerCase().includes(this.searchText.toLowerCase());
+      return element.codigo.toLowerCase().includes(this.searchText.toLowerCase()) || element.descripcion.toLowerCase().includes(this.searchText.toLowerCase());
     });
   }
 
   guardarTm() {
-    this.dto.idOa = this.idOa;
     this.tmService.save(this.dto).subscribe((data: any) => {
       window.location.replace("/tms");
     });
+  }
+
+  radioChange(event: any) {
+    console.log(event);
+    this.dto.idOa = event.value;
+    console.log(this.dto);
   }
 }
