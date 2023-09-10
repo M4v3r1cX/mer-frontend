@@ -31,7 +31,7 @@
         </div>
     </div>
     <br />
-    <div class="row">
+    <div class="row" *ngIf="oas != undefined">
         <div class="col-md-12">
             <table class="table" cellspacing="0">
                 <thead>
@@ -54,5 +54,10 @@
                 </tbody>
             </table>
         </div>
+    </div>
+    <div class="row" *ngIf="oas == undefined">
+        <div class="d-flex justify-content-center">
+            No existen Objetivos de Aprendizaje registrados en el sistema.
+          </div>
     </div>
 </div>

@@ -31,7 +31,7 @@
         </div>
     </div>
     <br />
-    <div class="row">
+    <div class="row" *ngIf="tms != undefined">
         <div class="col-md-12">
             <table class="table" cellspacing="0">
                 <thead>
@@ -53,5 +53,10 @@
                 </tbody>
             </table>
         </div>
+    </div>
+    <div class="row" *ngIf="tms == undefined">
+        <div class="d-flex justify-content-center">
+            No existen Tareas Matemáticas registradas en el sistema.
+          </div>
     </div>
 </div>

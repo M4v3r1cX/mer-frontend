@@ -13,7 +13,6 @@ export class AddtmComponent {
   dto: TMDto;
   oas: any = [];
   searchText = "";
-  idOa = "";
   oasFiltrados: any = [];
   titulo: string = "";
   idTm: string = "";

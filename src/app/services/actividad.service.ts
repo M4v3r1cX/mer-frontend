@@ -24,8 +24,8 @@ import { ActividadMerDTO } from "../models/ActividadMerDTO";
       return this.http.get(this.REST_URL + "actividadmer/deleteActividad?id=" + id);
     }
 
-    getLibrosYRedes() {
-      return this.http.get(this.REST_URL + "actividadmer/getLibrosYRedes");
+    getLibros() {
+      return this.http.get(this.REST_URL + "actividadmer/getLibros");
     }
 
     getActividad(id: string) {

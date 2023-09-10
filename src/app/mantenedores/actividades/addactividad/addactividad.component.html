@@ -25,28 +25,26 @@
         </div>
     </div>
       <div class="row">
-          <div class="col-md-6">
-            <label for="red" name="redLabel" class="float-end">
-              Elija una Red
-            </label>
-          </div>
-          <div class="col-md-6">
-              <select [(ngModel)]="dto.idRed" class="col-md-6" name="idRed">
-                  <option *ngFor="let r of redes" [ngValue]="r.id">{{r.nombre}}</option>
-              </select>
-          </div>
-      </div>
-      <div class="row">
         <div class="col-md-6">
-            <label for="nivel" name="nivelLabel" class="float-end">
-              Aligamientos al nivel
-            </label>
-          </div>
+          <label for="txtOa" name="txtOaLabel" class="float-end">
+            Tarea Matemática asociada
+          </label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" name="search" id="search" [ngModel]="searchText" (ngModelChange)="searchKey($event)" placeholder="Filtrar lista de TMs..." ngModel>
           <div class="col-md-6">
-              <select [(ngModel)]="dto.idNivel" class="col-md-6" name="idNivel">
-                  <option *ngFor="let n of niveles" [ngValue]="n">{{n}}º</option>
-              </select>
+            <mat-radio-group
+              aria-labelledby="example-radio-group-label"
+              class="example-radio-group" >
+              <div class="row"> <!-- for acá? -->
+                <mat-radio-button class="example-radio-button" *ngFor="let tm of tmsFiltrados; let i = index" [value]="tm.id" (change)="radioChange($event);">
+                  TM-{{tm.id}} - {{tm.codigoOa}}: {{tm.descripcion}}
+                </mat-radio-button><br />
+                <div *ngIf="listaFiltrada == true">(Lista filtrada. Utilice el buscador para encontrar todas las tareas matemáticas.)</div>
+              </div>
+            </mat-radio-group>
           </div>
+        </div>
       </div>
       <div class="row">
         <div class="col-md-6">
@@ -62,39 +60,8 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          <label for="txtCajaOa" name="txtCajaOaLabel" class="float-end">
-              Texto caja OA Capa 2
-          </label>
-          </div>
-          <div class="col-md-6">
-          <textarea
-          [(ngModel)]="dto.textoCajaOaCapa2"
-          name="txtCajaOa"
-          placeholder=""
-          required="required" class="col-md-6"
-          ></textarea>
-          </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-        <label for="txtCajaTm" name="txtCajaTmLabel" class="float-end">
-            Texto caja TM Capa 2
-        </label>
-        </div>
-        <div class="col-md-6">
-        <textarea
-        type="text"
-        [(ngModel)]="dto.textoCajaTmCapa2"
-        name="txtCajaTm"
-        placeholder=""
-        required="required" class="col-md-6"
-        ></textarea>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
         <label for="ubicacionEnLibro" name="ubicacionEnLibroLabel" class="float-end">
-            Descripción, Texto, Volumen, Página
+            Ubicación en libro<br/>(Descripción, Texto, Volumen, Página)
         </label>
         </div>
         <div class="col-md-6">
@@ -114,13 +81,13 @@
         </label>
         </div>
         <div class="col-md-6">
-        <input
+        <textarea
         type="text"
         [(ngModel)]="dto.descripcionActividad"
         name="descripcionActividad"
         placeholder=""
         required="required" class="col-md-6"
-        />
+        ></textarea>
         </div>
       </div>
       <div class="row">
