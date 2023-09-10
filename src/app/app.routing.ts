@@ -8,16 +8,19 @@ import { IndexComponent } from "./index/index.component";
 import { OamaintainerComponent } from "./mantenedores/oa/oamaintainer/oamaintainer.component";
 import { AddoaComponent } from "./mantenedores/oa/addoa/addoa.component";
 import { TmmaintainerComponent } from "./mantenedores/tm/tmmaintainer/tmmaintainer.component";
+import { AuthGuard } from "./services/authguard";
+import { LogoutComponent } from "./mantenedores/usuarios/login/logout.component";
 
 const appRoutes = [
     { path: "", component: IndexComponent},
     { path: "login", component: LoginComponent},
-    { path: "register", component: RegisterComponent },
-    { path: "libros", component: LibromaintainerComponent},
-    { path: "actividades", component: ActividadesmaintainerComponent},
-    { path: "oas", component: OamaintainerComponent },
-    { path: "oas/add", component: AddoaComponent },
-    { path: "tms", component: TmmaintainerComponent }
+    { path: "register", component: RegisterComponent},
+    { path: "libros", component: LibromaintainerComponent, canActivate: [AuthGuard]},
+    { path: "actividades", component: ActividadesmaintainerComponent, canActivate: [AuthGuard]},
+    { path: "oas", component: OamaintainerComponent, canActivate: [AuthGuard] },
+    { path: "oas/add", component: AddoaComponent, canActivate: [AuthGuard] },
+    { path: "tms", component: TmmaintainerComponent, canActivate: [AuthGuard] },
+    { path: "logout", component: LogoutComponent }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

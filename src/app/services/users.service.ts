@@ -23,7 +23,29 @@ export class UsersService {
     setToken(token: string) {
       this.cookies.set("token", token);
     }
+    
     getToken() {
       return this.cookies.get("token");
     }
+
+    deleteToken() {
+      this.cookies.delete("token");
+    }
+
+    isLoggedIn() {
+      let token: string = this.getToken();
+      if (token !== null && token !== "") {
+          console.log('token diferente de null');
+          if (!this.tokenExpired(token)) {
+              return true;
+          }
+      }
+
+      return false;
+    }
+
+    private tokenExpired(token: string) {
+      const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
+      return (Math.floor((new Date).getTime() / 1000)) >= expiry;
+  }
 }

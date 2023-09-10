@@ -20,6 +20,7 @@ export class LoginComponent {
   login() {
     const loginDTO = { usuario: this.email, password: this.password };
     this.userService.login(loginDTO).subscribe((data: any) => {
+      console.log(data);
       this.userService.setToken(data.comentario);
       this.router.navigateByUrl("/");
     });
