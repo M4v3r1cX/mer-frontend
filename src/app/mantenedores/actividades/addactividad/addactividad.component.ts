@@ -21,6 +21,7 @@ export class AddactividadComponent {
   tmsFiltrados: any = [];
   maxList = 6;
   listaFiltrada = true;
+  loadingVisible: boolean = false;
 
   ngOnInit() {
     this.actividadService.getLibros().subscribe((data:any)=>{ // llamar solo libros o hardcodearlo
@@ -74,6 +75,7 @@ export class AddactividadComponent {
   }
 
   guardarActividad() {
+    this.loadingVisible = true;
     this.actividadService.save(this.dto).subscribe((data: any) => {
       window.location.replace("/actividades");
     });

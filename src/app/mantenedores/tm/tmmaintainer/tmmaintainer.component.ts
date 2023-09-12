@@ -4,6 +4,7 @@ import { DeletetmComponent } from '../deletetm/deletetm.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { TmService } from 'src/app/services/tm.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-tmmaintainer',
@@ -11,9 +12,10 @@ import { TmService } from 'src/app/services/tm.service';
   styleUrls: ['./tmmaintainer.component.css']
 })
 export class TmmaintainerComponent {
-  constructor(public dialog: MatDialog, public tmService: TmService){}
+  constructor(public dialog: MatDialog, public tmService: TmService, public usersService: UsersService){}
 
   tms: any = [];
+  loadingVisible: boolean = false;
 
   ngOnInit() {
     this.tmService.getTms().subscribe((data: any) => {
@@ -24,7 +26,7 @@ export class TmmaintainerComponent {
 
   openDialogAddTm() {
     const dialogRef = this.dialog.open(AddtmComponent, {
-      height: '70%',
+      height: '50%',
       width: '70%',
       data: 'Agregar Tarea Matemática,-1'
     });
@@ -54,6 +56,7 @@ export class TmmaintainerComponent {
 
     dialogRef.afterClosed().subscribe((eliminar: Boolean) => {
       if(eliminar) {
+        this.loadingVisible = true;
         this.tmService.deleteTm(id).subscribe((data: any) => {
           window.location.replace("/tms");
         });

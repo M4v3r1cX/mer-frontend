@@ -5,6 +5,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import { OaService } from 'src/app/services/oa.service';
 import { OaHijoDTO } from 'src/app/models/OaHijoDTO';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-addoa',
@@ -16,6 +17,7 @@ export class AddoaComponent {
   redes: any = [];
   niveles: any = [];
   libros: any = [];
+  loadingVisible: boolean = false;
 
   ngOnInit() {
     this.oaService.getRedes().subscribe((data:any)=>{
@@ -28,7 +30,7 @@ export class AddoaComponent {
     this.niveles = ["1","2","3","4","5","6"];
   }
 
-  constructor(public oaService: OaService) {
+  constructor(public oaService: OaService, public usersService: UsersService) {
     this.dto = new OaDTO();
   }
 
@@ -67,6 +69,7 @@ export class AddoaComponent {
   }
 
   guardarOa() {
+    this.loadingVisible = true;
     this.oaService.save(this.dto).subscribe((data: any) => {
       window.location.replace("/oas");
     });
@@ -74,16 +77,6 @@ export class AddoaComponent {
 
   agregarHijo() {
     let oa: OaHijoDTO = new OaHijoDTO();
-    /*if (this.dto.niveles.length > 0) {
-      this.dto.niveles.forEach((r: string) => {
-        oa.niveles.push(r);
-      });
-    }
-    if (this.dto.redes.length > 0) {
-      this.dto.redes.forEach((r: string) => {
-        oa.redes.push(r);
-      });
-    }*/
     this.dto.hijos.push(oa);
   }
 
@@ -117,4 +110,7 @@ export class AddoaComponent {
     this.dto.hijos.splice(idx, 1);
   }
   
+  cancelar() {
+    window.location.replace("/oas");
+  }
 }

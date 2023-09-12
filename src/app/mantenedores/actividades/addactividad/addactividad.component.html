@@ -1,4 +1,7 @@
 <div class="container">
+  <div *ngIf="loadingVisible">
+    <mat-spinner class="center"></mat-spinner>
+  </div>
   <br />
   <div class="row">
       <div class="col-md-12">
@@ -6,7 +9,6 @@
       </div>
   </div>
   <br />
-  <mat-dialog-content>
   <form class="custom-form mx-auto" method="post">
     <div class="row">
       <div class="col-md-6">
@@ -27,20 +29,20 @@
       <div class="row">
         <div class="col-md-6">
           <label for="txtOa" name="txtOaLabel" class="float-end">
-            Tarea Matemática asociada
+            Tarea Matemática asociada<br />
+            <div *ngIf="listaFiltrada == true" style="color:gray;">(Lista filtrada.<br /> Utilice el buscador para <br />encontrar todas las tareas<br /> matemáticas.)</div>
           </label>
         </div>
         <div class="col-md-6">
-          <input type="text" name="search" id="search" [ngModel]="searchText" (ngModelChange)="searchKey($event)" placeholder="Filtrar lista de TMs..." ngModel>
+          <input class="col-md-6" type="text" name="search" id="search" [ngModel]="searchText" (ngModelChange)="searchKey($event)" placeholder="Filtrar lista de TMs..." ngModel>
           <div class="col-md-6">
             <mat-radio-group
               aria-labelledby="example-radio-group-label"
               class="example-radio-group" >
-              <div class="row"> <!-- for acá? -->
-                <mat-radio-button class="example-radio-button" *ngFor="let tm of tmsFiltrados; let i = index" [value]="tm.id" (change)="radioChange($event);">
+              <div class="row" *ngFor="let tm of tmsFiltrados; let i = index"> <!-- for acá? -->
+                <mat-radio-button class="example-radio-button" [value]="tm.id" (change)="radioChange($event);" *ngIf="i < 5">
                   TM-{{tm.id}} - {{tm.codigoOa}}: {{tm.descripcion}}
                 </mat-radio-button><br />
-                <div *ngIf="listaFiltrada == true">(Lista filtrada. Utilice el buscador para encontrar todas las tareas matemáticas.)</div>
               </div>
             </mat-radio-group>
           </div>
@@ -117,6 +119,7 @@
         </div>
       </div>
     <br />
+
     <div class="row">
       <div class="col-md-6">
         <button class="btn btn-dark float-end" type="submit" (click)="guardarActividad()"><i class="bi bi-save"></i> Guardar Actividad</button>
@@ -126,5 +129,4 @@
       </div>
     </div>
     </form>
-  </mat-dialog-content>
 </div>

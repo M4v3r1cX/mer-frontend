@@ -4,6 +4,7 @@ import { DeleteactividadComponent } from '../deleteactividad/deleteactividad.com
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { ActividadService } from 'src/app/services/actividad.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-actividadesmaintainer',
@@ -11,9 +12,10 @@ import { ActividadService } from 'src/app/services/actividad.service';
   styleUrls: ['./actividadesmaintainer.component.css']
 })
 export class ActividadesmaintainerComponent {
-  constructor(public dialog: MatDialog, public actividadService: ActividadService) {}
+  constructor(public dialog: MatDialog, public actividadService: ActividadService, public usersService: UsersService) {}
 
   actividades: any = [];
+  loadingVisible: boolean = false;
 
   ngOnInit() {
     this.actividadService.getActividades().subscribe((data:any)=>{
@@ -24,8 +26,8 @@ export class ActividadesmaintainerComponent {
 
   openDialogAddActividad() {
     const dialogRef = this.dialog.open(AddactividadComponent, {
-      height: '70%',
-      width: '70%',
+      height: '75%',
+      width: '80%',
       data: 'Agregar Actividad,-1'
     });
 
@@ -54,6 +56,7 @@ export class ActividadesmaintainerComponent {
 
     dialogRef.afterClosed().subscribe((eliminar: Boolean) => {
       if(eliminar) {
+        this.loadingVisible = true;
         this.actividadService.deleteActividad(id).subscribe((data: any) => {
           window.location.replace("/actividades");
         });

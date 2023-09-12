@@ -13,7 +13,6 @@ import { RegisterComponent } from './mantenedores/usuarios/register/register.com
 import { LibromaintainerComponent } from './mantenedores/libros/libromaintainer/libromaintainer.component';
 import { AddlibroComponent } from './mantenedores/libros/addlibro/addlibro.component';
 import { IndexComponent } from './index/index.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -30,6 +29,7 @@ import { TmmaintainerComponent } from './mantenedores/tm/tmmaintainer/tmmaintain
 import { AddtmComponent } from './mantenedores/tm/addtm/addtm.component';
 import { DeletetmComponent } from './mantenedores/tm/deletetm/deletetm.component';
 import { FilterPipe } from './services/filter.pipe';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -57,11 +57,11 @@ import { FilterPipe } from './services/filter.pipe';
     FormsModule,
     HttpClientModule,
     routing,
-    NoopAnimationsModule,
     MatDialogModule,
     MatCheckboxModule,
     MatRadioModule, 
-    MatInputModule
+    MatInputModule,
+    MatProgressSpinnerModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

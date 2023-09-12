@@ -44,6 +44,11 @@ export class UsersService {
       return false;
     }
 
+    getNombreUsuario() {
+      let decodedJWT = JSON.parse(window.atob(this.getToken().split('.')[1]));
+      return decodedJWT.name;
+    }
+
     private tokenExpired(token: string) {
       const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
       return (Math.floor((new Date).getTime() / 1000)) >= expiry;

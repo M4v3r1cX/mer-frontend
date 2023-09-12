@@ -1,7 +1,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container-fluid">
-    <a class="navbar-brand" href="#"><b>Redes Evolutivas Matemáticas</b></a>
+    <a class="navbar-brand" href="#"><b><i class="bi bi-bezier2"></i> Redes Evolutivas Matemáticas</b></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -17,10 +17,21 @@
             <a class="nav-link active" href="/actividades">Actividades</a>
         </li>
         </ul>
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item" style="color: white;align-items: center; display: flex;">
+                <i class="bi bi-person-fill"></i> {{ usersService.getNombreUsuario() }}
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/logout"><i class="bi bi-box-arrow-in-left"></i> Cerrar Sesión</a>
+            </li>
+        </ul>
     </div>
     </div>
 </nav>
 <div class="container">
+    <div *ngIf="loadingVisible">
+        <mat-spinner class="center"></mat-spinner>
+      </div>
     <br />
     <div class="row">
         <div class="col-md-6">
@@ -35,20 +46,20 @@
         <div class="col-md-12">
             <table class="table" cellspacing="0">
                 <thead>
-                    <th class="col-md-2">Actividad</th>
-                    <th class="col-md-2">Red</th>
-                    <th class="col-md-2">Nivel</th>
-                    <th class="col-md-2">Libro</th>
-                    <th class="float-end col-md-4">Opciones</th>
+                    <tr>
+                        <th class="col-md-2" scope="col">Actividad</th>
+                        <th class="col-md-2" scope="col">Libro</th>
+                        <th class="col-md-4" scope="col">Tarea Matemática</th>
+                        <th class="col-md-4">Opciones</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let actividad of actividades">
-                        <td scope="row" class="col-md-2">{{ actividad.nombre }}</td>
-                        <td scope="row" class="col-md-2">{{ actividad.red }}</td>
-                        <td scope="row" class="col-md-2">{{ actividad.nivel }}</td>
-                        <td scope="row" class="col-md-2">{{ actividad.libro }}</td>
-                        <td class="float-end"><button class="btn btn-dark" mat-raised-button (click)="openDialogEditActividad(actividad.id);"><i class="bi bi-pencil"></i> Ver/Editar</button></td>
-                        <td class="float-end"><button class="btn btn-dark" mat-raised-button (click)="openDialogConfirmDelete(actividad.id, actividad.nombre);"><i class="bi bi-trash"></i> Eliminar</button></td>
+                        <th scope="row" class="col-md-2">{{ actividad.nombre }}</th>
+                        <td>{{ actividad.libro }}</td>
+                        <td>{{ actividad.tm }}</td>
+                        <td><button class="btn btn-dark" mat-raised-button (click)="openDialogEditActividad(actividad.id);"><i class="bi bi-pencil"></i> Ver/Editar</button></td>
+                        <td><button class="btn btn-dark" mat-raised-button (click)="openDialogConfirmDelete(actividad.id, actividad.nombre);"><i class="bi bi-trash"></i> Eliminar</button></td>
                     </tr>
                 </tbody>
             </table>

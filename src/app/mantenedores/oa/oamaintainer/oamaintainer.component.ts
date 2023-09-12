@@ -5,6 +5,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { OaService } from 'src/app/services/oa.service';
 import { ViewoahijoComponent } from '../viewoahijo/viewoahijo.component';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-oamaintainer',
@@ -12,15 +13,17 @@ import { ViewoahijoComponent } from '../viewoahijo/viewoahijo.component';
   styleUrls: ['./oamaintainer.component.css']
 })
 export class OamaintainerComponent {
-  constructor(public dialog: MatDialog, public oaService: OaService){}
+  constructor(public dialog: MatDialog, public oaService: OaService, public usersService: UsersService){}
 
   oas: any = [];
+  loadingVisible: boolean = false;
 
   ngOnInit() {
+    this.loadingVisible = true;
     this.oaService.getOas().subscribe((data:any)=>{
       this.oas = data.oas;
-      console.log(data.oas);
     });
+    this.loadingVisible = false;
   }
 
   openDialogAddOa() {
@@ -64,6 +67,7 @@ export class OamaintainerComponent {
 
     dialogRef.afterClosed().subscribe((eliminar: Boolean) => {
       if(eliminar) {
+        this.loadingVisible = true;
         this.oaService.deleteOa(id).subscribe((data: any) => {
           window.location.replace("/oas");
         });

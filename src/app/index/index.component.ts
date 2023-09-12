@@ -26,6 +26,7 @@ export class IndexComponent {
       });
       dialogRef.afterClosed().subscribe(result => {
         this.loginLevantado = false;
+        this.dialog.closeAll();
       });
     }
   }

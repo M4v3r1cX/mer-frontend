@@ -16,6 +16,8 @@ export class AddtmComponent {
   oasFiltrados: any = [];
   titulo: string = "";
   idTm: string = "";
+  listaFiltrada = true;
+  loadingVisible: boolean = false;
 
   ngOnInit() {
   }
@@ -52,6 +54,7 @@ export class AddtmComponent {
   }
 
   guardarTm() {
+    this.loadingVisible = true;
     this.tmService.save(this.dto).subscribe((data: any) => {
       window.location.replace("/tms");
     });
