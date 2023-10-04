@@ -71,7 +71,7 @@ export class AddoaComponent {
   guardarOa() {
     this.loadingVisible = true;
     this.oaService.save(this.dto).subscribe((data: any) => {
-      window.location.replace("/oas");
+      window.location.replace("#/oas");
     });
   }
 
@@ -111,6 +111,6 @@ export class AddoaComponent {
   }
   
   cancelar() {
-    window.location.replace("/oas");
+    window.location.replace("#/oas");
   }
 }

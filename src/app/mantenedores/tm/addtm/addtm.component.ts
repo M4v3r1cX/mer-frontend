@@ -56,7 +56,8 @@ export class AddtmComponent {
   guardarTm() {
     this.loadingVisible = true;
     this.tmService.save(this.dto).subscribe((data: any) => {
-      window.location.replace("/tms");
+      window.location.replace("#/tms");
+      window.location.reload();
     });
   }
 

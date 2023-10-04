@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { CookieService } from "ngx-cookie-service";
 
 import { AppComponent } from './app.component';
@@ -30,6 +30,8 @@ import { AddtmComponent } from './mantenedores/tm/addtm/addtm.component';
 import { DeletetmComponent } from './mantenedores/tm/deletetm/deletetm.component';
 import { FilterPipe } from './services/filter.pipe';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { ApiInterceptorService } from './services/api-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatInputModule,
     MatProgressSpinnerModule
   ],
-  providers: [CookieService],
+  providers: [
+    CookieService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

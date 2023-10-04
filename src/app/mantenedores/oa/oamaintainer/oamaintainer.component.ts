@@ -36,11 +36,11 @@ export class OamaintainerComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });*/
-    window.location.replace("/oas/add");
+    window.location.replace("#/oas/add");
   }
 
   openDialogEditOa(id: number) {
-    const dialogRef = this.dialog.open(AddoaComponent, {
+    /*const dialogRef = this.dialog.open(AddoaComponent, {
       height: '70%',
       width: '70%',
       data: 'Editar Actividad,' + id
@@ -48,7 +48,8 @@ export class OamaintainerComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
-    });
+    });*/
+    alert('Función aún no implementada');
   }
 
   openDialogVerHijosOa(id: number, codigo: string) {
@@ -69,7 +70,8 @@ export class OamaintainerComponent {
       if(eliminar) {
         this.loadingVisible = true;
         this.oaService.deleteOa(id).subscribe((data: any) => {
-          window.location.replace("/oas");
+          window.location.replace("#/oas");
+          window.location.reload();
         });
       }
     });

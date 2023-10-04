@@ -37,7 +37,7 @@ export class TmmaintainerComponent {
   }
 
   openDialogEditTm(id: number) {
-    const dialogRef = this.dialog.open(AddtmComponent, {
+    /*const dialogRef = this.dialog.open(AddtmComponent, {
       height: '70%',
       width: '70%',
       data: 'Editar Tarea Matemática,' + id
@@ -45,7 +45,8 @@ export class TmmaintainerComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
-    });
+    });*/
+    alert('Función aún no implementada');
   }
 
   openDialogConfirmDelete(id: number) {
@@ -58,7 +59,8 @@ export class TmmaintainerComponent {
       if(eliminar) {
         this.loadingVisible = true;
         this.tmService.deleteTm(id).subscribe((data: any) => {
-          window.location.replace("/tms");
+          window.location.replace("#/tms");
+          window.location.reload();
         });
       }
     });
