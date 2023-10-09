@@ -106,6 +106,10 @@ export class AddoaComponent {
     }
   }
 
+  onCheckPriorizadoHijoChange(event: any, idx: number) {
+    this.dto.hijos[idx].prioridad = event.checked;
+  }
+
   quitarHijo(idx: number) {
     this.dto.hijos.splice(idx, 1);
   }

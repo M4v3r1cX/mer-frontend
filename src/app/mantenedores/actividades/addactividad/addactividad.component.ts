@@ -75,6 +75,7 @@ export class AddactividadComponent {
   }
 
   guardarActividad() {
+    console.log(this.dto);
     this.loadingVisible = true;
     this.actividadService.save(this.dto).subscribe((data: any) => {
       window.location.replace("#/actividades");

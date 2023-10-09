@@ -34,14 +34,13 @@
             </div>
             <div class="col-md-6">
               <input type="text" name="search" id="search" [ngModel]="searchText" (ngModelChange)="searchKey($event)" placeholder="Filtrar lista de OAs..." ngModel>
-              
               <div class="col-md-6">
                 <mat-radio-group
                   aria-labelledby="example-radio-group-label"
                   class="example-radio-group" >
                   <div class="row" *ngFor="let o of oasFiltrados; let i = index">
                     <mat-radio-button class="example-radio-button" [value]="o.id" (change)="radioChange($event)" *ngIf="i < 5">
-                      {{o.codigo}}: {{o.descripcion}}
+                      {{o.codigo}} -  {{o.descripcion}}
                     </mat-radio-button>
                   </div>
                 </mat-radio-group>
