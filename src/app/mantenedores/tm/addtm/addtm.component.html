@@ -39,7 +39,7 @@
                   aria-labelledby="example-radio-group-label"
                   class="example-radio-group" >
                   <div class="row" *ngFor="let o of oasFiltrados; let i = index">
-                    <mat-radio-button class="example-radio-button" [value]="o.id" (change)="radioChange($event)" *ngIf="i < 5">
+                    <mat-radio-button class="example-radio-button" [value]="o.id" [checked]="oaSeleccionado === o.id" (change)="radioChange($event)" *ngIf="i < 5">
                       {{o.codigo}} -  {{o.descripcion}}
                     </mat-radio-button>
                   </div>

@@ -40,7 +40,7 @@
               aria-labelledby="example-radio-group-label"
               class="example-radio-group" >
               <div class="row" *ngFor="let tm of tmsFiltrados; let i = index"> <!-- for acá? -->
-                <mat-radio-button class="example-radio-button" [value]="tm.id" (change)="radioChange($event);" *ngIf="i < 5">
+                <mat-radio-button class="example-radio-button" [value]="tm.id" [checked]="tmSeleccionado === tm.id" (change)="radioChange($event);" *ngIf="i < 5">
                   TM-{{tm.id}} - {{tm.codigoOa}}: {{tm.descripcion}}
                 </mat-radio-button><br />
               </div>
@@ -56,7 +56,7 @@
           </div>
           <div class="col-md-6">
               <select [(ngModel)]="dto.idLibro" class="col-md-6" name="idLibro">
-                  <option *ngFor="let l of libros" [ngValue]="l.id">{{l.nombre}}</option>
+                  <option *ngFor="let l of libros" [ngValue]="l.id" [selected]="libroSeleccionado === l.id" >{{l.nombre}}</option>
               </select>
           </div>
       </div>

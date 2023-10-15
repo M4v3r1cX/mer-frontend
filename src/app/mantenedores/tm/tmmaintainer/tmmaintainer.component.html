@@ -47,17 +47,21 @@
             <table class="table" cellspacing="0">
                 <thead>
                     <tr>
-                        <th class="col-md-2" scope="col">TM</th>
+                        <th class="col-md-1" scope="col">TM</th>
                         <th class="col-md-2" scope="col">Descripcion</th>
                         <th class="col-md-4" scope="col">OA Padre - Descripcion OA Hijo</th>
-                        <th scope="col-md-4">Opciones</th>
+                        <th class="col-md-1" scope="col">Nivel</th>
+                        <th class="col-md-2" scope="col">Red</th>
+                        <th scope="col-md-2">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let tm of tms">
-                        <th scope="row" class="col-md-2">TM-{{tm.id}}</th>
+                        <th scope="row" class="col-md-1">TM-{{tm.id}}</th>
                         <td>{{ tm.descripcion }}</td>
                         <td>{{ tm.codigoOa }}  -  {{ tm.descripcionOa }}</td>
+                        <td><p *ngFor="let nivel of tm.niveles"><i class="bi bi-dot"></i> {{nivel}}</p></td>
+                        <td><p *ngFor="let red of tm.redes"><i class="bi bi-dot"></i> {{red}}</p></td>
                         <td><button class="btn btn-dark" mat-raised-button (click)="openDialogEditTm(tm.id);"><i class="bi bi-pencil"></i> Ver/Editar</button></td>
                         <td><button class="btn btn-dark" mat-raised-button (click)="openDialogConfirmDelete(tm.id);"><i class="bi bi-trash"></i> Eliminar</button></td>
                     </tr>

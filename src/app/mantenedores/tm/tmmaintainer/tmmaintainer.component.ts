@@ -37,7 +37,7 @@ export class TmmaintainerComponent {
   }
 
   openDialogEditTm(id: number) {
-    /*const dialogRef = this.dialog.open(AddtmComponent, {
+    const dialogRef = this.dialog.open(AddtmComponent, {
       height: '70%',
       width: '70%',
       data: 'Editar Tarea Matemática,' + id
@@ -45,8 +45,8 @@ export class TmmaintainerComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
-    });*/
-    alert('Función aún no implementada');
+    });
+    //alert('Función aún no implementada');
   }
 
   openDialogConfirmDelete(id: number) {

@@ -18,6 +18,7 @@ export class AddtmComponent {
   idTm: string = "";
   listaFiltrada = true;
   loadingVisible: boolean = false;
+  oaSeleccionado: string = "";
 
   ngOnInit() {
   }
@@ -35,6 +36,8 @@ export class AddtmComponent {
     if (this.idTm !== '-1') {
       this.tmService.getTm(this.idTm).subscribe((data: any) => {
         this.dto = data;
+        this.oaSeleccionado = this.dto.idOa;
+        console.log(this.oaSeleccionado);
       });
     }
   }

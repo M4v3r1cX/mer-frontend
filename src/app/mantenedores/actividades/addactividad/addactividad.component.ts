@@ -22,10 +22,13 @@ export class AddactividadComponent {
   maxList = 6;
   listaFiltrada = true;
   loadingVisible: boolean = false;
+  tmSeleccionado: string = "";
+  libroSeleccionado: string = "";
 
   ngOnInit() {
-    this.actividadService.getLibros().subscribe((data:any)=>{ // llamar solo libros o hardcodearlo
+    this.actividadService.getLibros().subscribe((data:any)=>{
       this.libros = data;
+      console.log(this.libros);
     });
 
     this.tmService.getTms().subscribe((data: any) => {
@@ -43,6 +46,9 @@ export class AddactividadComponent {
     if (this.idActividad !== '-1') {
       this.actividadService.getActividad(this.idActividad).subscribe((data: any) => {
         this.dto = data;
+        console.log(this.dto);
+        this.tmSeleccionado = this.dto.idTm;
+        this.libroSeleccionado = this.dto.idLibro;
       });
     }
   }

@@ -37,7 +37,7 @@ export class ActividadesmaintainerComponent {
   }
 
   openDialogEditActividad(id: number) {
-    /*const dialogRef = this.dialog.open(AddactividadComponent, {
+    const dialogRef = this.dialog.open(AddactividadComponent, {
       height: '70%',
       width: '70%',
       data: 'Editar Actividad,' + id
@@ -45,8 +45,8 @@ export class ActividadesmaintainerComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
-    });*/
-    alert('Función aún no implementada');
+    });
+    //alert('Función aún no implementada');
   }
 
   openDialogConfirmDelete(id: number, nombre: string) {
