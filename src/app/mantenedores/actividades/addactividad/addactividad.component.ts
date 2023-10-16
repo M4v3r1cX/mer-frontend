@@ -49,6 +49,7 @@ export class AddactividadComponent {
         console.log(this.dto);
         this.tmSeleccionado = this.dto.idTm;
         this.libroSeleccionado = this.dto.idLibro;
+        console.log(this.libroSeleccionado);
       });
     }
   }
@@ -108,6 +109,12 @@ export class AddactividadComponent {
   radioChange(event: any) {
     console.log(event);
     this.dto.idTm = event.value;
+    console.log(this.dto);
+  }
+
+  radioLibroChange(event: any) {
+    console.log(event);
+    this.dto.idLibro = event.value;
     console.log(this.dto);
   }
 }

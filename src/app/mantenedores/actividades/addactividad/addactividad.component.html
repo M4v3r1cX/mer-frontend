@@ -55,9 +55,18 @@
             </label>
           </div>
           <div class="col-md-6">
-              <select [(ngModel)]="dto.idLibro" class="col-md-6" name="idLibro">
+              <!--<select [(ngModel)]="dto.idLibro" class="col-md-6" name="idLibro">
                   <option *ngFor="let l of libros" [ngValue]="l.id" [selected]="libroSeleccionado === l.id" >{{l.nombre}}</option>
-              </select>
+              </select>-->
+              <mat-radio-group
+              aria-labelledby="example-radio-group-label"
+              class="example-radio-group" >
+              <div class="row" *ngFor="let l of libros"> <!-- for acá? -->
+                <mat-radio-button class="example-radio-button" [value]="l.id" [checked]="libroSeleccionado === l.id" (change)="radioLibroChange($event);">
+                  {{l.nombre}}
+                </mat-radio-button><br />
+              </div>
+            </mat-radio-group>
           </div>
       </div>
       <div class="row">
