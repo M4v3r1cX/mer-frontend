@@ -78,12 +78,21 @@
                 </label>
               </div>
               <div class="col-md-6">
-                <div *ngFor="let chk of niveles; let i = index" class="col-md-6">
+                <mat-radio-group
+                  aria-labelledby="example-radio-group-label"
+                  class="example-radio-group" >
+                  <div class="row" *ngFor="let chk of niveles; let i = index" class="col-md-6"> <!-- [checked]="nvlSeleccionado === chk" -->
+                    <mat-radio-button class="example-radio-button" [value]="chk" (change)="onCheckNvlChange($event)">
+                      {{chk}}º
+                    </mat-radio-button>
+                  </div>
+                </mat-radio-group>
+                <!--<div *ngFor="let chk of niveles; let i = index" class="col-md-6">
                   <label>
                     <mat-checkbox [value]="chk" (change)="onCheckNvlChange($event)" />
                     {{chk}}º
                   </label>
-                </div>
+                </div> -->
               </div>
           </div>
           <div class="row">
@@ -153,16 +162,25 @@
                 <div class="row">
                   <div class="col-md-6">
                       <label for="nivel" name="nivelLabel" class="float-end">
-                        Eliga los Niveles en los que el OA estará disponible
+                        Eliga el Curso en los que el OA estará disponible
                       </label>
                     </div>
                     <div class="col-md-6">
-                      <div *ngFor="let chk of niveles; let i = index" class="col-md-6">
+                      <mat-radio-group
+                        aria-labelledby="example-radio-group-label"
+                        class="example-radio-group" >
+                        <div class="row" *ngFor="let chk of niveles; let i = index" class="col-md-6"> <!-- [checked]="nvlSeleccionado === chk" -->
+                          <mat-radio-button class="example-radio-button" [value]="chk" (change)="onCheckNvlHijoChange($event, idxHijo)">
+                            {{chk}}º
+                          </mat-radio-button>
+                        </div>
+                      </mat-radio-group>
+                      <!--<div *ngFor="let chk of niveles; let i = index" class="col-md-6">
                         <label>
                           <mat-checkbox [value]="chk" (change)="onCheckNvlHijoChange($event, idxHijo)" />
                           {{chk}}º
                         </label>
-                      </div>
+                      </div>-->
                     </div>
                 </div>
                 <div class="row">

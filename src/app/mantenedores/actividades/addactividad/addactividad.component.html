@@ -127,6 +127,16 @@
           <input type="file" (change)="CreateBase64String($event)" class="fileInputProfile form-control"  class="col-md-6">
         </div>
       </div>
+      <div class="row" *ngIf="tieneImagen">
+        <div class="col-md-6">
+        <label for="imagenReferencia" name="imagenReferenciaLabel" class="float-end">
+            Imagen Actual
+        </label>
+        </div>
+        <div class="col-md-6">
+          <img [src]="imgActual" class="miniaturaImg">
+        </div>
+      </div>
     <br />
 
     <div class="row">

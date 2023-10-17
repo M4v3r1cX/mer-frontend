@@ -48,7 +48,10 @@ export class AddoaComponent {
   }
 
   onCheckNvlChange(event: any) {
-    if(event.checked) {
+    console.log(event);
+    this.dto.niveles.push(event.value);
+    console.log(this.dto);
+    /*if(event.checked) {
       this.dto.niveles.push(event.source.value);
     } else {
 
@@ -57,7 +60,7 @@ export class AddoaComponent {
           this.dto.niveles.splice(index, 1);
         }
       });
-    }
+    }*/
   }
 
   onCheckPriorizadoChange(event: any) {

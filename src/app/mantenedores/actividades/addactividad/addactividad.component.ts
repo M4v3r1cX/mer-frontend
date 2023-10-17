@@ -24,6 +24,8 @@ export class AddactividadComponent {
   loadingVisible: boolean = false;
   tmSeleccionado: string = "";
   libroSeleccionado: string = "";
+  imgActual: string = "";
+  tieneImagen: boolean = false;
 
   ngOnInit() {
     this.actividadService.getLibros().subscribe((data:any)=>{
@@ -50,6 +52,10 @@ export class AddactividadComponent {
         this.tmSeleccionado = this.dto.idTm;
         this.libroSeleccionado = this.dto.idLibro;
         console.log(this.libroSeleccionado);
+        if (this.dto.imagenReferencia != null) {
+          this.tieneImagen = true;
+          this.imgActual = 'data:image/jpg;base64,' + this.dto.imagenReferencia;
+        }
       });
     }
   }
@@ -99,6 +105,8 @@ export class AddactividadComponent {
         image.onload = rs => {
           const imgBase64Path = e.target.result;
           this.dto.imagenReferencia = imgBase64Path;
+          this.tieneImagen = true;
+          this.imgActual = this.dto.imagenReferencia;
           console.log(imgBase64Path);
         };
       };

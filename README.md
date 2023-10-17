@@ -1,4 +1,4 @@
-# MER Frontend
+# MER Frontend (Balthazar)
 FrontEnd para el proyecto MER de Peter Salfate
 
 ## Building
