@@ -23,7 +23,7 @@ export class AddactividadComponent {
   listaFiltrada = true;
   loadingVisible: boolean = false;
   tmSeleccionado: string = "";
-  libroSeleccionado: string = "";
+  libroSeleccionado: number = -1;
   imgActual: string = "";
   tieneImagen: boolean = false;
 
@@ -50,7 +50,7 @@ export class AddactividadComponent {
         this.dto = data;
         console.log(this.dto);
         this.tmSeleccionado = this.dto.idTm;
-        this.libroSeleccionado = this.dto.idLibro;
+        this.libroSeleccionado = + this.dto.idLibro;
         console.log(this.libroSeleccionado);
         if (this.dto.imagenReferencia != null) {
           this.tieneImagen = true;

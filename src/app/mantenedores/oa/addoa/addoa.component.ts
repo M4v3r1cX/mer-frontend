@@ -6,6 +6,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import { OaService } from 'src/app/services/oa.service';
 import { OaHijoDTO } from 'src/app/models/OaHijoDTO';
 import { UsersService } from 'src/app/services/users.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-addoa',
@@ -13,11 +14,13 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./addoa.component.css']
 })
 export class AddoaComponent {
-  dto: OaDTO;
+  dto: OaDTO = new OaDTO();;
   redes: any = [];
   niveles: any = [];
   libros: any = [];
   loadingVisible: boolean = false;
+  id: string | null = "";
+  nivelSeleccionado: string = "";
 
   ngOnInit() {
     this.oaService.getRedes().subscribe((data:any)=>{
@@ -28,10 +31,27 @@ export class AddoaComponent {
     });
 
     this.niveles = ["1","2","3","4","5","6"];
+
+    //this.id = this.route.snapshot.paramMap.get('id');
+    this.route.queryParams
+      .subscribe(params => {
+        console.log(params);
+        this.id = params['id'];
+        console.log(this.id);
+      }
+    );
+    console.log(this.id);
+    if (this.id != null) {
+      this.oaService.getOa(this.id).subscribe((data:any)=>{
+        this.dto = data;
+        console.log(this.dto);
+        this.nivelSeleccionado = this.dto.niveles[0];
+        console.log(this.nivelSeleccionado);
+      });
+    }
   }
 
-  constructor(public oaService: OaService, public usersService: UsersService) {
-    this.dto = new OaDTO();
+  constructor(public oaService: OaService, public usersService: UsersService, private route: ActivatedRoute) {
   }
 
   onCheckRedChange(event: any) {

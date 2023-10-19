@@ -19,6 +19,7 @@ const appRoutes = [
     { path: "actividades", component: ActividadesmaintainerComponent, canActivate: [AuthGuard]},
     { path: "oas", component: OamaintainerComponent, canActivate: [AuthGuard] },
     { path: "oas/add", component: AddoaComponent, canActivate: [AuthGuard] },
+    { path: "oas/add/:id", component: AddoaComponent, canActivate: [AuthGuard] },
     { path: "tms", component: TmmaintainerComponent, canActivate: [AuthGuard] },
     { path: "logout", component: LogoutComponent }
 ];

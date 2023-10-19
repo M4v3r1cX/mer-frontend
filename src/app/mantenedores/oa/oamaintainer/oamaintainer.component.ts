@@ -49,7 +49,8 @@ export class OamaintainerComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });*/
-    alert('Función aún no implementada');
+    //alert('Función aún no implementada');
+    window.location.replace("#/oas/add?id=" + id);
   }
 
   openDialogVerHijosOa(id: number, codigo: string) {

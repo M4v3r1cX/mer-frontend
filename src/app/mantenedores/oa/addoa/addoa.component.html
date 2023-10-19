@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-            <a class="nav-link active" href="/oas">Objetivos de Aprendizaje</a>
+            <a class="nav-link active" href="#/oas">Objetivos de Aprendizaje</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#/tms">Tareas Matemáticas</a>
@@ -82,7 +82,7 @@
                   aria-labelledby="example-radio-group-label"
                   class="example-radio-group" >
                   <div class="row" *ngFor="let chk of niveles; let i = index" class="col-md-6"> <!-- [checked]="nvlSeleccionado === chk" -->
-                    <mat-radio-button class="example-radio-button" [value]="chk" (change)="onCheckNvlChange($event)">
+                    <mat-radio-button class="example-radio-button" [value]="chk" [checked]="nivelSeleccionado === chk" (change)="onCheckNvlChange($event)">
                       {{chk}}º
                     </mat-radio-button>
                   </div>
@@ -138,8 +138,8 @@
                     <div class="col-md-6">
                       <textarea
                     [(ngModel)]="dto.hijos[idxHijo].descripcion"
-                    name="codigo"
-                    placeholder="OA-99"
+                    name="descripcionOaHijo"
+                    placeholder="Descripción OA HIjo"
                     required="required" class="col-md-6"
                     ></textarea>
                     </div>
