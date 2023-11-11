@@ -42,11 +42,13 @@
     <form class="custom-form mx-auto" method="post">
         <div class="row">
           <div class="col-md-6">
-            <label for="codigo" name="codigoLabel" class="float-end">
-                Código
+            <label for="codigo" name="codigoLabel" class="float-start">
+                <h2><b>Código</b></h2>
             </label>
             </div>
-            <div class="col-md-6">
+            </div>
+            <div class="row">
+            <div class="col-md-10 offset-md-2">
             <input
             matInput type="text"
             [(ngModel)]="dto.codigo"
@@ -56,28 +58,38 @@
             />
             </div>
         </div>
+        <br />
           <div class="row">
-              <div class="col-md-6">
-                <label for="red" name="redLabel" class="float-end">
-                  Elija las redes en las que estará disponible el OA
+              <div class="col-md-12">
+                <label for="red" name="redLabel">
+                  <h2><b>Elija las redes en las que estará disponible el OA</b></h2>
                 </label>
               </div>
-              <div class="col-md-6">
-                  <div *ngFor="let chk of redes; let i = index" class="col-md-6">
+              </div>
+              <div class="row">
+              <div class="col-md-11 offset-md-2">
+                  <div *ngFor="let r of redes; let i = index" class="col-md-11">
                     <label>
-                      <mat-checkbox [value]="chk.id" (change)="onCheckRedChange($event)" />
-                      {{chk.nombre}}
+                        <h3>{{r.nombre}}</h3>
                     </label>
+                    <div *ngFor="let s of r.subcategorias; let idx = index" class="col-md-11">
+                      <label>
+                        <mat-checkbox [value]="s.id" (change)="onCheckRedChange($event)" />
+                        {{s.descripcion}}
+                      </label>
+                    </div>
                   </div>
               </div>
-          </div>
+          </div><br />
           <div class="row">
-            <div class="col-md-6">
-                <label for="nivel" name="nivelLabel" class="float-end">
-                  Eliga los Niveles en los que el OA estará disponible
+            <div class="col-md-12">
+                <label for="nivel" name="nivelLabel" class="float-start">
+                  <h2><b>Eliga los Niveles en los que el OA estará disponible</b></h2>
                 </label>
               </div>
-              <div class="col-md-6">
+              </div>
+              <div class="row">
+              <div class="col-md-6 offset-md-2">
                 <mat-radio-group
                   aria-labelledby="example-radio-group-label"
                   class="example-radio-group" >
@@ -97,8 +109,8 @@
           </div>
           <div class="row">
             <div class="col-md-6">
-              <label for="txtDescripcion" name="txtDescripcionLabel" class="float-end">
-                  Descripción
+              <label for="txtDescripcion" name="txtDescripcionLabel" class="float-start">
+                  <h2>Descripción</h2>
               </label>
               </div>
               <div class="col-md-6">
