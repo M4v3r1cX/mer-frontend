@@ -21,15 +21,9 @@ export class AddoaComponent {
   loadingVisible: boolean = false;
   id: string | null = "";
   nivelSeleccionado: string = "";
+  tieneHijo: boolean = false;
 
   ngOnInit() {
-    this.oaService.getRedes().subscribe((data:any)=>{
-      this.libros = data.libros;
-      this.redes = data.redes;
-      console.log(this.libros);
-      console.log(this.redes);
-    });
-
     this.niveles = ["1","2","3","4","5","6"];
 
     //this.id = this.route.snapshot.paramMap.get('id');
@@ -47,24 +41,33 @@ export class AddoaComponent {
         console.log(this.dto);
         this.nivelSeleccionado = this.dto.niveles[0];
         console.log(this.nivelSeleccionado);
+        if (this.dto.hijos.length > 0) {
+          this.tieneHijo = true;
+        }
       });
     }
   }
 
   constructor(public oaService: OaService, public usersService: UsersService, private route: ActivatedRoute) {
+    this.oaService.getRedes().subscribe((data:any)=>{
+      this.libros = data.libros;
+      this.redes = data.redes;
+      console.log(this.libros);
+      console.log(this.redes);
+    });
   }
 
   onCheckRedChange(event: any) {
     if(event.checked) {
       this.dto.redes.push(event.source.value);
     } else {
-
       this.dto.redes.forEach((r: string, index) => {
         if (r == event.source.value) {
           this.dto.redes.splice(index, 1);
         }
       });
     }
+    console.log(this.dto.redes);
   }
 
   onCheckNvlChange(event: any) {
@@ -99,6 +102,7 @@ export class AddoaComponent {
   }
 
   agregarHijo() {
+    this.tieneHijo = true;
     let oa: OaHijoDTO = new OaHijoDTO();
     this.dto.hijos.push(oa);
   }

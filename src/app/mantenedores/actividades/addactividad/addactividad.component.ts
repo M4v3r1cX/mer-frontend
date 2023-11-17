@@ -98,19 +98,35 @@ export class AddactividadComponent {
 
   CreateBase64String(fileInput: any) {
     if (fileInput.target.files && fileInput.target.files[0]) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        const image = new Image();
-        image.src = e.target.result;
-        image.onload = rs => {
-          const imgBase64Path = e.target.result;
-          this.dto.imagenReferencia = imgBase64Path;
-          this.tieneImagen = true;
-          this.imgActual = this.dto.imagenReferencia;
-          console.log(imgBase64Path);
-        };
-      };
-      reader.readAsDataURL(fileInput.target.files[0]);
+      if (fileInput.target.files[0].type === 'image/jpeg' || 
+          fileInput.target.files[0].type === 'image/png' || 
+          fileInput.target.files[0].type ==='image/jpg') {
+          if (fileInput.target.files[0].size < 5000000) {
+            const reader = new FileReader();
+            reader.onload = (e: any) => {
+              const image = new Image();
+              image.src = e.target.result;
+              image.onload = rs => {
+                const imgBase64Path = e.target.result;
+                this.dto.imagenReferencia = imgBase64Path;
+                this.tieneImagen = true;
+                this.imgActual = this.dto.imagenReferencia;
+                //console.log(imgBase64Path);
+              };
+            };
+            reader.readAsDataURL(fileInput.target.files[0]);
+          } else {
+            alert('Archivo no puede superar los 5MB de tamaño.');
+            this.imgActual = "";
+            this.tieneImagen = false;
+            this.dto.imagenReferencia = "";
+          }
+      } else {
+        alert('Archivo debe ser JPG o PNG.');
+        this.tieneImagen = false;
+        this.imgActual = "";
+        this.dto.imagenReferencia = "";
+      }
     }
   }
 

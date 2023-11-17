@@ -43,7 +43,7 @@
         <div class="row">
           <div class="col-md-6">
             <label for="codigo" name="codigoLabel" class="float-start">
-                <h2><b>Código</b></h2>
+                <h3><b>Código</b></h3>
             </label>
             </div>
             </div>
@@ -59,18 +59,18 @@
             </div>
         </div>
         <br />
-          <div class="row">
+          <div class="row" *ngIf="tieneHijo == false">
               <div class="col-md-12">
                 <label for="red" name="redLabel">
-                  <h2><b>Elija las redes en las que estará disponible el OA</b></h2>
+                  <h3><b>Elija las redes en las que estará disponible el OA</b></h3>
                 </label>
               </div>
               </div>
-              <div class="row">
+              <div class="row" *ngIf="tieneHijo == false">
               <div class="col-md-11 offset-md-2">
                   <div *ngFor="let r of redes; let i = index" class="col-md-11">
                     <label>
-                        <h3>{{r.nombre}}</h3>
+                        <h4>{{r.nombre}}</h4>
                     </label>
                     <div *ngFor="let s of r.subcategorias; let idx = index" class="col-md-11">
                       <label>
@@ -84,7 +84,7 @@
           <div class="row">
             <div class="col-md-12">
                 <label for="nivel" name="nivelLabel" class="float-start">
-                  <h2><b>Eliga los Niveles en los que el OA estará disponible</b></h2>
+                  <h3><b>Eliga los Niveles en los que el OA estará disponible</b></h3>
                 </label>
               </div>
               </div>
@@ -108,12 +108,12 @@
               </div>
           </div>
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
               <label for="txtDescripcion" name="txtDescripcionLabel" class="float-start">
-                  <h2>Descripción</h2>
+                  <h3><b>Descripción</b></h3>
               </label>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12  offset-md-2">
               <textarea
               [(ngModel)]="dto.descripcion"
               name="txtDescripcion"
@@ -123,14 +123,14 @@
               </div>
           </div>
           <div class="row">
-            <div class="col-md-6">
-              <label for="txtPriorizado" name="txtPriorizadoLabel" class="float-end">
-                  Priorizado?
+            <div class="col-md-12">
+              <label for="txtPriorizado" name="txtPriorizadoLabel2" class="float-start">
+                  <h3><b>OA Priorizado</b></h3>
               </label>
               </div>
               <div class="col-md-6">
-                <div class="col-md-6">
-                  <label>
+                <div class="col-md-6 offset-md-4">
+                  <label>Priorizado?
                     <mat-checkbox (change)="onCheckPriorizadoChange($event)" />
                   </label>
                 </div>
@@ -142,12 +142,14 @@
               <hr >
               <div class="">
                 <div class="row">
-                  <div class="col-md-6">
-                    <label for="descripcionOaHijo" name="descripcionOaHijoLabel" class="float-end">
-                        Descripción hijo {{idxHijo + 1}}
+                  <div class="col-md-12">
+                    <label for="descripcionOaHijo" name="descripcionOaHijoLabel">
+                        <h3>Descripción hijo {{idxHijo + 1}}</h3>
                     </label>
                     </div>
-                    <div class="col-md-6">
+                    </div>
+                    <div class="row">
+                    <div class="col-md-12 offset-md-2">
                       <textarea
                     [(ngModel)]="dto.hijos[idxHijo].descripcion"
                     name="descripcionOaHijo"
@@ -157,58 +159,42 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-md-6">
-                      <label for="red" name="redLabel" class="float-end">
-                        Elija las redes en las que estará disponible el OA Hijo
+                    <div class="col-md-12">
+                      <label for="red" name="redLabel">
+                        <h3>Elija las redes en las que estará disponible el OA Hijo</h3>
                       </label>
                     </div>
-                    <div class="col-md-6">
-                        <div *ngFor="let chk of redes; let idxRedHijo = index" class="col-md-6">
+                    </div>
+                    
+                <div class="row">
+                  <div class="col-md-12 offset-md-2">
+                      <div *ngFor="let r of redes; let i = index" class="col-md-11">
+                        <label>
+                            <h4>{{r.nombre}}</h4>
+                        </label>
+                        <div *ngFor="let s of r.subcategorias; let idx = index" class="col-md-11">
                           <label>
-                            <mat-checkbox [value]="chk.id" (change)="onCheckRedHijoChange($event, idxHijo)" />
-                            {{chk.nombre}}
+                            <mat-checkbox [value]="s.id" (change)="onCheckRedHijoChange($event, idxHijo)" />
+                            {{s.descripcion}}
                           </label>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
+                      </div>
+                  </div>
+              </div><br />
+              <div class="row">
+                <div class="col-md-12">
+                  <label for="txtPriorizado" name="txtPriorizadoLabel2" class="float-start">
+                      <h3><b>OA Priorizado</b></h3>
+                  </label>
+                  </div>
                   <div class="col-md-6">
-                      <label for="nivel" name="nivelLabel" class="float-end">
-                        Eliga el Curso en los que el OA estará disponible
+                    <div class="col-md-6 offset-md-4">
+                      <label>Priorizado?
+                        <mat-checkbox (change)="onCheckPriorizadoHijoChange($event, idxHijo)" />
                       </label>
                     </div>
-                    <div class="col-md-6">
-                      <mat-radio-group
-                        aria-labelledby="example-radio-group-label"
-                        class="example-radio-group" >
-                        <div class="row" *ngFor="let chk of niveles; let i = index" class="col-md-6"> <!-- [checked]="nvlSeleccionado === chk" -->
-                          <mat-radio-button class="example-radio-button" [value]="chk" (change)="onCheckNvlHijoChange($event, idxHijo)">
-                            {{chk}}º
-                          </mat-radio-button>
-                        </div>
-                      </mat-radio-group>
-                      <!--<div *ngFor="let chk of niveles; let i = index" class="col-md-6">
-                        <label>
-                          <mat-checkbox [value]="chk" (change)="onCheckNvlHijoChange($event, idxHijo)" />
-                          {{chk}}º
-                        </label>
-                      </div>-->
-                    </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <label for="txtPriorizado" name="txtPriorizadoLabel" class="float-end">
-                        Priorizado?
-                    </label>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="col-md-6">
-                        <label>
-                          <mat-checkbox (change)="onCheckPriorizadoHijoChange($event, idxHijo)" />
-                        </label>
-                      </div>
-                    </div>
-                </div>
+                  </div>
+              </div>
               </div>
             </div>
             <br />
@@ -223,7 +209,7 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <div class="d-flex justify-content-center">
+              <div class="d-flex justify-content-center" *ngIf="id == null">
                 <button class="btn btn-dark float-center col-md-2" (click)="agregarHijo()"><i class="bi bi-plus"></i> Agregar OA Hijo</button>
               </div>
             </div>
