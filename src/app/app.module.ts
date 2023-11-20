@@ -32,6 +32,7 @@ import { FilterPipe } from './services/filter.pipe';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ApiInterceptorService } from './services/api-interceptor.service';
+import { AsociaroaComponent } from './mantenedores/oa/asociaroa/asociaroa.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ApiInterceptorService } from './services/api-interceptor.service';
     TmmaintainerComponent,
     AddtmComponent,
     DeletetmComponent,
-    FilterPipe
+    FilterPipe,
+    AsociaroaComponent
   ],
   imports: [
     BrowserModule,

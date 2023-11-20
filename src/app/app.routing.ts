@@ -10,6 +10,7 @@ import { AddoaComponent } from "./mantenedores/oa/addoa/addoa.component";
 import { TmmaintainerComponent } from "./mantenedores/tm/tmmaintainer/tmmaintainer.component";
 import { AuthGuard } from "./services/authguard";
 import { LogoutComponent } from "./mantenedores/usuarios/login/logout.component";
+import { AsociaroaComponent } from "./mantenedores/oa/asociaroa/asociaroa.component";
 
 const appRoutes = [
     { path: "", component: IndexComponent},
@@ -20,6 +21,7 @@ const appRoutes = [
     { path: "oas", component: OamaintainerComponent, canActivate: [AuthGuard] },
     { path: "oas/add", component: AddoaComponent, canActivate: [AuthGuard] },
     { path: "oas/add/:id", component: AddoaComponent, canActivate: [AuthGuard] },
+    { path: "oas/asociar", component: AsociaroaComponent, canActivate: [AuthGuard] },
     { path: "tms", component: TmmaintainerComponent, canActivate: [AuthGuard] },
     { path: "logout", component: LogoutComponent }
 ];
