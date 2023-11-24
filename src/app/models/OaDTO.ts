@@ -1,6 +1,7 @@
 import { OaHijoDTO } from "./OaHijoDTO";
 
 export class OaDTO {
+    id: string;
     codigo: string;
     descripcion: string;
     redes: string[];
@@ -9,6 +10,7 @@ export class OaDTO {
     hijos: OaHijoDTO[];
 
     constructor() {
+        this.id = "";
         this.codigo = "";
         this.descripcion = "";
         this.redes = [];

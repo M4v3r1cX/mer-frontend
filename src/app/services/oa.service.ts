@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { environment } from '../../environments/environment';
 import { OaDTO } from "../models/OaDTO";
+import { AsociarOaDTO } from "../models/AsociarOaDTO";
 
 @Injectable({
     providedIn: "root",
@@ -14,6 +15,10 @@ import { OaDTO } from "../models/OaDTO";
 
     save(oa: OaDTO) {
       return this.http.post(this.REST_URL + "oa/save", oa);
+    }
+
+    saveAsociarOas(oa: AsociarOaDTO) {
+      return this.http.post(this.REST_URL + "oa/saveAsociarOas", oa);
     }
 
     getOas() {

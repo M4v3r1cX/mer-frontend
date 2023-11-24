@@ -30,8 +30,8 @@ export class OamaintainerComponent {
     window.location.replace("#/oas/add");
   }
 
-  openAsociarOa() {
-    window.location.replace("#/oas/asociar");
+  openAsociarOa(id: number) {
+    window.location.replace("#/oas/asociar?id=" + id);
   }
 
   openDialogEditOa(id: number) {

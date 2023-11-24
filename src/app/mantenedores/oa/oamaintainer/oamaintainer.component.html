@@ -38,7 +38,6 @@
             <h1><b>Objetivos de Aprendizaje</b></h1>
         </div>
         <div class="col-md-6">
-            <button (click)="openAsociarOa()" class="btn btn-dark float-end"><i class="bi bi-plus"></i> Asociar OAs</button>
             <button (click)="openDialogAddOa()" class="btn btn-dark float-end"><i class="bi bi-plus"></i> Agregar OA</button>
         </div>
     </div>
@@ -61,6 +60,7 @@
                         <td class="col-md-4"><p *ngFor="let nivel of oa.niveles"><i class="bi bi-dot"></i> {{nivel}}</p></td>
                         <td><button class="btn btn-dark" mat-raised-button (click)="openDialogVerHijosOa(oa.id, oa.codigo);"><i class="bi bi-eye-fill"></i> Ver Hijos</button></td>
                         <td><button class="btn btn-dark" mat-raised-button (click)="openDialogEditOa(oa.id);"><i class="bi bi-pencil"></i> Ver/Editar</button></td>
+                        <td><button (click)="openAsociarOa(oa.id)" class="btn btn-dark float-end"><i class="bi bi-plus"></i> Asociar OAs</button></td>
                         <td><button class="btn btn-dark" mat-raised-button (click)="openDialogConfirmDelete(oa.id, oa.codigo);"><i class="bi bi-trash"></i> Eliminar</button></td>
                     </tr>
                 </tbody>
