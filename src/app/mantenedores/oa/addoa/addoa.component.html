@@ -131,7 +131,7 @@
               <div class="col-md-6">
                 <div class="col-md-6 offset-md-4">
                   <label>Priorizado?
-                    <mat-checkbox (change)="onCheckPriorizadoChange($event)" />
+                    <mat-checkbox (change)="onCheckPriorizadoChange($event)" [checked]="dto.prioridad"/>
                   </label>
                 </div>
               </div>
@@ -174,7 +174,7 @@
                         </label>
                         <div *ngFor="let s of r.subcategorias; let idx = index" class="col-md-11">
                           <label>
-                            <mat-checkbox [value]="s.id" (change)="onCheckRedHijoChange($event, idxHijo)" />
+                            <mat-checkbox [value]="s.id" (change)="onCheckRedHijoChange($event, idxHijo)" [checked]="isChecked(s.id, idxHijo)" />
                             {{s.descripcion}}
                           </label>
                         </div>
@@ -190,7 +190,7 @@
                   <div class="col-md-6">
                     <div class="col-md-6 offset-md-4">
                       <label>Priorizado?
-                        <mat-checkbox (change)="onCheckPriorizadoHijoChange($event, idxHijo)" />
+                        <mat-checkbox (change)="onCheckPriorizadoHijoChange($event, idxHijo)" [checked]="dto.hijos[idxHijo].prioridad" />
                       </label>
                     </div>
                   </div>

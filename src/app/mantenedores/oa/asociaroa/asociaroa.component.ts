@@ -12,6 +12,7 @@ import { OaDTO } from 'src/app/models/OaDTO';
 })
 export class AsociaroaComponent {
   constructor(public usersService: UsersService, public oaService: OaService, private route: ActivatedRoute){
+    
   }
 
   loadingVisible: boolean = false;
@@ -24,10 +25,12 @@ export class AsociaroaComponent {
   oaSeleccionado: string = "";
   dto: AsociarOaDTO = new AsociarOaDTO();
   oasSeleccionados: any = [];
+  oasPreseleccionados: string[] = [];
 
   ngOnInit() {
     this.loadingVisible = true;
     this.oaService.getOas().subscribe((data:any)=>{
+      console.log(data);
       this.oas = data.oas;
       this.asociarVisible = true;
       this.search2();
@@ -40,9 +43,17 @@ export class AsociaroaComponent {
     );
     console.log(this.id);
     if (this.id != null) {
-      this.oaService.getOa(this.id).subscribe((data:any)=>{
-        this.oaInicial = data;
+      this.oaService.getOaAsociado(this.id).subscribe((data:any)=>{
+        console.log(data);
+        this.oaInicial = data.oaDto;
         this.dto.idOaInicial = this.id || '';
+        console.log(data.asociados);
+        this.oasPreseleccionados = data.asociados;
+        for (let r of this.oasPreseleccionados) {
+          this.oasSeleccionados.push(r);
+          this.dto.idOasFinales.push(r);
+        }
+        console.log(this.oasPreseleccionados);
       });
     }
     this.loadingVisible = false;
@@ -71,7 +82,7 @@ export class AsociaroaComponent {
           this.oasSeleccionados.push(oa);
           console.log(this.oasSeleccionados);
         }
-      });
+      });// al desmarcar weas tiene que desaparecer de la lista de cuadraditos! y también tiene que salir la información del OA
     } else {
       this.dto.idOasFinales.forEach((r: string, index) => {
         if (r == event.source.value) {
@@ -101,5 +112,18 @@ export class AsociaroaComponent {
 
   deleteAsociaciones(id: string) {
 
+  }
+
+  estaAsociado(id: string) : boolean {
+    let ret: boolean = false;
+
+    if (this.oasPreseleccionados != null) {
+      if (this.oasPreseleccionados.indexOf(id) > -1) {
+        ret = true;
+        console.log('id ' + id + ' encontrado.');
+      }
+    }
+    
+    return ret;
   }
 }

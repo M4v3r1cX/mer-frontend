@@ -26,7 +26,6 @@ export class AddoaComponent {
   ngOnInit() {
     this.niveles = ["1","2","3","4","5","6"];
 
-    //this.id = this.route.snapshot.paramMap.get('id');
     this.route.queryParams
       .subscribe(params => {
         console.log(params);
@@ -44,6 +43,7 @@ export class AddoaComponent {
         if (this.dto.hijos.length > 0) {
           this.tieneHijo = true;
         }
+        console.log('tiene hijo?: ' + this.tieneHijo);
       });
     }
   }
@@ -72,6 +72,7 @@ export class AddoaComponent {
 
   onCheckNvlChange(event: any) {
     console.log(event);
+    this.dto.niveles.splice(0);
     this.dto.niveles.push(event.value);
     console.log(this.dto);
     /*if(event.checked) {
@@ -143,5 +144,16 @@ export class AddoaComponent {
   
   cancelar() {
     window.location.replace("#/oas");
+  }
+
+  isChecked(id: string, posicion: number): boolean {
+    let ret : boolean = false;
+
+    if (this.dto.hijos[posicion].redes.indexOf(String(id)) > -1) {
+      ret = true;
+      console.log(true);
+    }
+
+    return ret;
   }
 }

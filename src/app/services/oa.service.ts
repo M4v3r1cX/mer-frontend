@@ -40,4 +40,8 @@ import { AsociarOaDTO } from "../models/AsociarOaDTO";
     getHijosOa(id: string) {
       return this.http.get(this.REST_URL + "oa/getHijos?id=" + id);
     }
+
+    getOaAsociado(id: string) {
+      return this.http.get(this.REST_URL + "oa/getOaAsociaciones?id=" + id);
+    }
   }

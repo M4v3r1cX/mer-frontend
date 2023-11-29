@@ -57,7 +57,7 @@
                 <input type="text" name="search" id="search" [ngModel]="searchText2" (ngModelChange)="searchKey2($event)" placeholder="Filtrar lista de OAs..." ngModel>
                 <div *ngFor="let o of oasFiltrados2; let idx = index" class="col-md-11">
                     <label *ngIf="idx < 12">
-                      <mat-checkbox [value]="o.id" (change)="onCheckOaChange($event)" />
+                      <mat-checkbox [value]="o.id" (change)="onCheckOaChange($event)" [checked]="estaAsociado(o.id)" />
                       {{o.codigo}} -  {{o.descripcion}}
                     </label>
                   </div>
