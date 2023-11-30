@@ -59,8 +59,13 @@ export class ActividadesmaintainerComponent {
       if(eliminar) {
         this.loadingVisible = true;
         this.actividadService.deleteActividad(id).subscribe((data: any) => {
-          window.location.replace("#/actividades");
-          window.location.reload();
+          console.log('data');
+          if (data.codigo == 200) {
+            window.location.replace("#/actividades");
+            window.location.reload();
+          } else {
+            alert('Se ha producido un error al intentar eliminar el OA. Revise que este no esté asociado a otro OA antes de eliminarlo. De ser este el caso, por favor eliminelo de la asociación, e intente eliminar nuevamente.');
+          }
         });
       }
     });

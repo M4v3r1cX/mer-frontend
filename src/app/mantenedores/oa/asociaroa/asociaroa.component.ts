@@ -25,7 +25,7 @@ export class AsociaroaComponent {
   oaSeleccionado: string = "";
   dto: AsociarOaDTO = new AsociarOaDTO();
   oasSeleccionados: any = [];
-  oasPreseleccionados: string[] = [];
+  oasPreseleccionados: any[] = [];
 
   ngOnInit() {
     this.loadingVisible = true;
@@ -50,8 +50,8 @@ export class AsociaroaComponent {
         console.log(data.asociados);
         this.oasPreseleccionados = data.asociados;
         for (let r of this.oasPreseleccionados) {
+          this.dto.idOasFinales.push(r.id);
           this.oasSeleccionados.push(r);
-          this.dto.idOasFinales.push(r);
         }
         console.log(this.oasPreseleccionados);
       });
@@ -118,9 +118,15 @@ export class AsociaroaComponent {
     let ret: boolean = false;
 
     if (this.oasPreseleccionados != null) {
-      if (this.oasPreseleccionados.indexOf(id) > -1) {
+      /*if (this.oasPreseleccionados.indexOf(id) > -1) { // aca
         ret = true;
         console.log('id ' + id + ' encontrado.');
+      }*/
+      for (let oa of this.oasPreseleccionados) {
+        if (oa.id == id) {
+          ret = true;
+          console.log('id ' + id + ' encontrado.');
+        }
       }
     }
     
