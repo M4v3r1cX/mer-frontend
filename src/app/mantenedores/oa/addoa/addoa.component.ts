@@ -139,6 +139,7 @@ export class AddoaComponent {
   }
 
   quitarHijo(idx: number) {
+    this.dto.hijosABorrar.push(this.dto.hijos[idx].id);
     this.dto.hijos.splice(idx, 1);
   }
   

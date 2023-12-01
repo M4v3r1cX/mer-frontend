@@ -8,6 +8,7 @@ export class OaDTO {
     niveles: string[];
     prioridad: boolean;
     hijos: OaHijoDTO[];
+    hijosABorrar: string[];
 
     constructor() {
         this.id = "";
@@ -17,5 +18,6 @@ export class OaDTO {
         this.niveles = [];
         this.prioridad = false;
         this.hijos = [];
+        this.hijosABorrar = [];
     }
 }
