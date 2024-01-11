@@ -10,7 +10,35 @@
     </div>
     <br />
     <form class="custom-form mx-auto" method="post">
-          
+          <div class="row">
+            <div class="col-md-6">
+              <label for="txtOa" name="txtOaLabel" class="float-end">
+                Filtros para los OAs<br />
+              </label>
+            </div>
+            <div class="col-md-6">
+              <select id="filtroRed">
+                <option value="0">Seleccione Red</option>
+                <option value="1">Números</option>
+                <option value="2">Campo Aditivo</option>
+                <option value="3">Campo Multiplicativo</option>
+                <option value="4">Patrones y Álgebra</option>
+                <option value="5">Medición</option>
+                <option value="6">Geometría</option>
+                <option value="7">Datos y Probabilidades</option>
+              </select>
+              <select id="filtroNivel">
+                <option value="0">Seleccione Nivel</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              </select> 
+              <button class="btn btn-dark" (click)="buscarOaTm()">Buscar</button>
+            </div>
+          </div><br />
           <div class="row">
             <div class="col-md-6">
               <label for="txtOa" name="txtOaLabel" class="float-end">
@@ -25,7 +53,7 @@
                   aria-labelledby="example-radio-group-label"
                   class="example-radio-group" >
                   <div class="row" *ngFor="let o of oasFiltrados; let i = index">
-                    <mat-radio-button class="example-radio-button" [value]="o.id" [checked]="oaSeleccionado === o.id" (change)="radioChange($event)" *ngIf="i < 5">
+                    <mat-radio-button class="example-radio-button" [value]="o.id" [checked]="oaSeleccionado === o.id" (change)="radioChange($event)" *ngIf="i < 20">
                       {{o.codigo}} -  {{o.descripcion}}
                     </mat-radio-button>
                   </div>

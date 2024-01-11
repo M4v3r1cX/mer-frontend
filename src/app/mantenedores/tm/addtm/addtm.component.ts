@@ -69,4 +69,13 @@ export class AddtmComponent {
     this.dto.idOa = event.value;
     console.log(this.dto);
   }
+
+  buscarOaTm() {
+    let valueRed = (<HTMLSelectElement>document.getElementById('filtroRed')).value;
+    let valueNivel = (<HTMLSelectElement>document.getElementById('filtroNivel')).value;
+    this.tmService.getOaTmFiltrados(valueRed, valueNivel).subscribe((data: any) => {
+      this.oas = data;
+      this.search();
+    });
+  }
 }

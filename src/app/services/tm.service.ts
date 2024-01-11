@@ -31,5 +31,9 @@ export class TmService {
     getOaTm() {
         return this.http.get(this.REST_URL + "tm/getAllOaTms");
     }
+
+    getOaTmFiltrados(red: string, nivel: string) {
+        return this.http.get(this.REST_URL + "tm/getOaTMsFiltrar?red=" + red + "&nivel=" + nivel);
+    }
     
 }
