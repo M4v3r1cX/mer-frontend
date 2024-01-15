@@ -26,6 +26,35 @@
         />
         </div>
     </div>
+    <div class="row">
+      <div class="col-md-6">
+        <label for="txtOa" name="txtOaLabel" class="float-end">
+          Filtros para los OAs<br />
+        </label>
+      </div>
+      <div class="col-md-6">
+        <select id="filtroRed">
+          <option value="0">Seleccione Red</option>
+          <option value="1">Números</option>
+          <option value="2">Campo Aditivo</option>
+          <option value="3">Campo Multiplicativo</option>
+          <option value="4">Patrones y Álgebra</option>
+          <option value="5">Medición</option>
+          <option value="6">Geometría</option>
+          <option value="7">Datos y Probabilidades</option>
+        </select>
+        <select id="filtroNivel">
+          <option value="0">Seleccione Nivel</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select> 
+        <button class="btn btn-dark" (click)="buscarTmActividad()">Buscar</button>
+      </div>
+    </div><br />
       <div class="row">
         <div class="col-md-6">
           <label for="txtOa" name="txtOaLabel" class="float-end">
@@ -40,7 +69,7 @@
               aria-labelledby="example-radio-group-label"
               class="example-radio-group" >
               <div class="row" *ngFor="let tm of tmsFiltrados; let i = index"> <!-- for acá? -->
-                <mat-radio-button class="example-radio-button" [value]="tm.id" [checked]="tmSeleccionado === tm.id" (change)="radioChange($event);" *ngIf="i < 5">
+                <mat-radio-button class="example-radio-button" [value]="tm.id" [checked]="tmSeleccionado === tm.id" (change)="radioChange($event);" *ngIf="i < 20">
                   TM-{{tm.id}} - {{tm.codigoOa}}: {{tm.descripcion}}
                 </mat-radio-button><br />
               </div>
@@ -55,9 +84,6 @@
             </label>
           </div>
           <div class="col-md-6">
-              <!--<select [(ngModel)]="dto.idLibro" class="col-md-6" name="idLibro">
-                  <option *ngFor="let l of libros" [ngValue]="l.id" [selected]="libroSeleccionado === l.id" >{{l.nombre}}</option>
-              </select>-->
               <mat-radio-group
               aria-labelledby="example-radio-group-label"
               class="example-radio-group" >

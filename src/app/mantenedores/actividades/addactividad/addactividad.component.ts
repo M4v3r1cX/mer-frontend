@@ -141,4 +141,13 @@ export class AddactividadComponent {
     this.dto.idLibro = event.value;
     console.log(this.dto);
   }
+
+  buscarTmActividad() {
+    let valueRed = (<HTMLSelectElement>document.getElementById('filtroRed')).value;
+    let valueNivel = (<HTMLSelectElement>document.getElementById('filtroNivel')).value;
+    this.tmService.getTmActividadFiltrados(valueRed, valueNivel).subscribe((data: any) => {
+      this.tms = data;
+      this.search();
+    });
+  }
 }

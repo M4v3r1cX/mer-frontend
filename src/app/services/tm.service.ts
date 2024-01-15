@@ -35,5 +35,8 @@ export class TmService {
     getOaTmFiltrados(red: string, nivel: string) {
         return this.http.get(this.REST_URL + "tm/getOaTMsFiltrar?red=" + red + "&nivel=" + nivel);
     }
-    
+
+    getTmActividadFiltrados(red: string, nivel: string) {
+        return this.http.get(this.REST_URL + "tm/getTMsActividadesFiltrar?red=" + red + "&nivel=" + nivel);
+    }
 }
