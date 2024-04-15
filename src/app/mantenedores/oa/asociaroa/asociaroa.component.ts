@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import { OaService } from 'src/app/services/oa.service';
 import { AsociarOaDTO } from 'src/app/models/AsociarOaDTO';
 import { ActivatedRoute } from '@angular/router';
 import { OaDTO } from 'src/app/models/OaDTO';
+import panzoom from "panzoom";
 
 @Component({
   selector: 'app-asociaroa',
   templateUrl: './asociaroa.component.html',
   styleUrls: ['./asociaroa.component.css']
 })
-export class AsociaroaComponent {
+export class AsociaroaComponent implements AfterViewInit {
   constructor(public usersService: UsersService, public oaService: OaService, private route: ActivatedRoute){
     
   }
@@ -26,6 +27,7 @@ export class AsociaroaComponent {
   dto: AsociarOaDTO = new AsociarOaDTO();
   oasSeleccionados: any = [];
   oasPreseleccionados: any[] = [];
+  showLoading: boolean = true;
 
   ngOnInit() {
     this.loadingVisible = true;
@@ -57,6 +59,22 @@ export class AsociaroaComponent {
       });
     }
     this.loadingVisible = false;
+  }
+
+  ngAfterViewInit() {
+    panzoom(document.querySelector('#zonamapa')!,
+    {
+      smoothScroll: false,
+      initialX: 0,
+      initialY: 0,
+      initialZoom: 0.24,
+      zoomDoubleClickSpeed: 1,
+      onDoubleClick: function(e) {
+        console.log(e);
+    
+        return false; // tells the library to not preventDefault, and not stop propagation
+      }
+    });
   }
 
   searchKey2(data: string) {
