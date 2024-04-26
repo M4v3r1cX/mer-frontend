@@ -59,6 +59,7 @@ export class AsociaroaComponent implements AfterViewInit {
       });
     }
     this.loadingVisible = false;
+    this.showLoading = false;
   }
 
   ngAfterViewInit() {
@@ -69,10 +70,15 @@ export class AsociaroaComponent implements AfterViewInit {
       initialY: 0,
       initialZoom: 0.24,
       zoomDoubleClickSpeed: 1,
-      onDoubleClick: function(e) {
-        console.log(e);
+      onDoubleClick: function(event: any) {
+        console.log(event);
+
+        let posx = event.layerx;
+        let posy = event.layery;
+
+        
     
-        return false; // tells the library to not preventDefault, and not stop propagation
+        return false;
       }
     });
   }
