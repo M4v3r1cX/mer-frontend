@@ -43,5 +43,8 @@
       Cargando...
     </div>
     <div id="zonamapa">
+        <a href="#" class="pincho" [style.left]="pinchoLeft + 'px'" [style.top]="pinchoTop + 'px'" *ngIf="posicionSeleccionada">{{pinchoLeft}},{{pinchoTop}}</a>
     </div>
+    <!--<img id="pincho" [src]="assets/map-pin.svg" [style.marginLeft]="pinchoLeft + 'px'" [style.marginTop]="pinchoTop + 'px'" *ngIf="posicionSeleccionada"/>-->
+    
 </div>
