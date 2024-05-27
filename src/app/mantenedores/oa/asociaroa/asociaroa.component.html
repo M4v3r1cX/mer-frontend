@@ -38,13 +38,20 @@
             <h1><b>Asociar Objetivos de Aprendizaje</b></h1>
         </div>
     </div>
+    <div class="row" *ngIf="!showLoading">
+        <div class="col-md-6">
+            <button class="btn btn-dark float-end" type="submit" (click)="guardarPosicion()"><i class="bi bi-save"></i> Guardar OA</button>
+        </div>
+        <div class="col-md-6">
+            <button mat-button mat-dialog-close class="btn btn-danger" type="button" (click)="cancelar()"><i class="bi bi-x"></i> Cancelar</button>
+        </div>
+    </div>
     <div *ngIf="showLoading" id="loading"><br /><br /><br /><br /><br />
       <div class="lds-ring"><div></div><div></div><div></div><div></div></div><br />
       Cargando...
     </div>
-    <div id="zonamapa">
-        <a href="#" class="pincho" [style.left]="pinchoLeft + 'px'" [style.top]="pinchoTop + 'px'" *ngIf="posicionSeleccionada">{{pinchoLeft}},{{pinchoTop}}</a>
+    <div *ngIf="!showLoading" id="zonamapa" [style.background-image]="'url(' +backgroundMapa +')'">
+        <div class="textoOa" [style.left]="pinchoLeft + 'px'" [style.top]="pinchoTop + 'px'" *ngIf="posicionSeleccionada"><p>{{textoProcesado}}</p></div>
     </div>
-    <!--<img id="pincho" [src]="assets/map-pin.svg" [style.marginLeft]="pinchoLeft + 'px'" [style.marginTop]="pinchoTop + 'px'" *ngIf="posicionSeleccionada"/>-->
     
 </div>

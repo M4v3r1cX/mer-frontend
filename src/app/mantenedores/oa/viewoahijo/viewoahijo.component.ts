@@ -30,6 +30,11 @@ export class ViewoahijoComponent {
   ngOnInit() {
     this.oaService.getHijosOa(this.idOa).subscribe((data:any)=>{
       this.hijos = data;
+      console.log(this.hijos);
     });
+  }
+
+  openAsociarOa(id: string) {
+    window.location.replace("#/oas/asociar?id=" + id);
   }
 }

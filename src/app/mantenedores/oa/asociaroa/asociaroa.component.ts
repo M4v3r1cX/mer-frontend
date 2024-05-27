@@ -4,6 +4,7 @@ import { OaService } from 'src/app/services/oa.service';
 import { ActivatedRoute } from '@angular/router';
 import { OaDTO } from 'src/app/models/OaDTO';
 import panzoom from "panzoom";
+import { OaHijoDTO } from 'src/app/models/OaHijoDTO';
 
 @Component({
   selector: 'app-asociaroa',
@@ -17,11 +18,14 @@ export class AsociaroaComponent implements AfterViewInit {
 
   loadingVisible: boolean = false;
   id: string | null = "";
-  dto: OaDTO = new OaDTO();
+  dto: OaHijoDTO = new OaHijoDTO();
   showLoading: boolean = true;
   pinchoLeft: number = 0;
   pinchoTop: number = 0;
   posicionSeleccionada: boolean = false;
+  rutaPincho: string = "assets/map-pin.svg";
+  backgroundMapa: string = "assets/Recurso2.svg";
+  textoProcesado: string = "";
 
   ngOnInit() {
     this.loadingVisible = true;
@@ -33,8 +37,22 @@ export class AsociaroaComponent implements AfterViewInit {
     );
     console.log(this.id);
     if (this.id != null) {
-      this.oaService.getOa(this.id).subscribe((data:any)=>{
+      this.oaService.getHijoById(this.id).subscribe((data:any)=>{
         this.dto = data;
+        console.log(this.dto);
+        if (this.dto.redes !== null && this.dto.redes.length == 1) {
+          console.log('aca');
+          this.backgroundMapa = this.oaService.getBackgroundMapa(this.dto.redes[0], "oa");
+          this.textoProcesado = this.dto.descripcion;
+        } else {
+          console.log('no, acá');
+          //mostrar dialogo
+        }
+        if (this.dto.tieneCoordenadas) {
+          this.pinchoLeft = this.dto.x;
+          this.pinchoTop = this.dto.y;
+          this.posicionSeleccionada = true;
+        }
       });
     }
     this.showLoading = false;
@@ -66,5 +84,12 @@ export class AsociaroaComponent implements AfterViewInit {
 
   cancelar() {
     window.location.replace("#/oas");
+  }
+
+  guardarPosicion() {
+    this.loadingVisible = true;
+    this.oaService.guardarPosicionOA(this.dto.id, this.pinchoLeft, this.pinchoTop).subscribe((data: any) => {
+      window.location.replace("#/oas");
+    });
   }
 }

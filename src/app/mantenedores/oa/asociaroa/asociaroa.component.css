@@ -21,7 +21,7 @@
   #zonamapa {
     width: 8000px;
     height: 5500px;
-    background-image: url("../../../../assets/Recurso2.svg");
+    /*background-image: url("../../../../assets/Recurso2.svg");*/
     background-repeat: no-repeat;
     /*background-size: 100%;*/
     background-size: cover;
@@ -31,6 +31,9 @@
     position: fixed;
   }
 
-  .pincho {
+  .textoOa {
     position: absolute;
+    text-align: left;
+    font-size: 30px;
+    white-space: pre-line;
   }
