@@ -22,6 +22,7 @@ export class OamaintainerComponent {
     this.loadingVisible = true;
     this.oaService.getOas().subscribe((data:any)=>{
       this.oas = data.oas;
+      console.log(this.oas);
     });
     this.loadingVisible = false;
   }
@@ -41,7 +42,7 @@ export class OamaintainerComponent {
   openDialogVerHijosOa(id: number, codigo: string) {
     const dialogRef = this.dialog.open(ViewoahijoComponent, {
       height: '70%',
-      width: '70%',
+      width: '85%',
       data: codigo + ',' + id
     });
   }

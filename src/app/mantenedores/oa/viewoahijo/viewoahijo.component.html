@@ -16,6 +16,8 @@
                             <th scope="col">Descripción</th>
                             <th scope="col">Red</th>
                             <th scope="col">Nivel</th>
+                            <th scope="col">Coordenadas</th>
+                            <th scope="col">Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -24,6 +26,8 @@
                             <td>{{oa.descripcion}} <i class="bi bi-star-fill" *ngIf="oa.prioridad == true"></i></td>
                             <td><p *ngFor="let red of oa.redes"><i class="bi bi-dot"></i> {{red}}</p></td>
                             <td><p *ngFor="let nivel of oa.niveles"><i class="bi bi-dot"></i> {{nivel}}</p></td>
+                            <td><p *ngIf="oa.tieneCoordenadas">{{oa.x}},{{oa.y}}</p></td>
+                            <td><button class="btn btn-dark" mat-raised-button (click)="openAsociarOa(oa.id)"><i class="bi bi-pin-map-fill"></i> Posicionar OA en Mapa</button></td>
                         </tr>
                     </tbody>
                 </table>

@@ -4,6 +4,9 @@ export class OaHijoDTO {
     redes: string[];
     niveles: string[];
     prioridad: boolean;
+    x: number;
+    y: number;
+    tieneCoordenadas: boolean;
 
     constructor() {
         this.id = "";
@@ -11,5 +14,8 @@ export class OaHijoDTO {
         this.redes = [];
         this.niveles = [];
         this.prioridad = false;
+        this.x = 0;
+        this.y = 0;
+        this.tieneCoordenadas = false;
     }
 }

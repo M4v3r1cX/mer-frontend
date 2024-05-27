@@ -38,60 +38,20 @@
             <h1><b>Asociar Objetivos de Aprendizaje</b></h1>
         </div>
     </div>
-    <br />
-    <form class="custom-form mx-auto" method="post">
-    <div class="row">
-            <div class="col-md-6">
-                El OA<br />
-                <mat-radio-group
-                  aria-labelledby="example-radio-group-label"
-                  class="example-radio-group" >
-                  <mat-radio-button class="example-radio-button" [value]="id" [checked]="true">
-                    {{oaInicial.codigo}} -  {{oaInicial.descripcion}}
-                  </mat-radio-button>
-                </mat-radio-group><br />
-                <span class="col-md-2"><b>se asociará con...</b></span>
-            </div>
-            <div class="col-md-6" *ngIf="asociarVisible === true">
-                Seleccione los OA a asociar con el OA Inicial<br />
-                <input type="text" name="search" id="search" [ngModel]="searchText2" (ngModelChange)="searchKey2($event)" placeholder="Filtrar lista de OAs..." ngModel>
-                <div *ngFor="let o of oasFiltrados2; let idx = index" class="col-md-11">
-                    <label *ngIf="idx < 12">
-                      <mat-checkbox [value]="o.id" (change)="onCheckOaChange($event)" [checked]="estaAsociado(o.id)" />
-                      {{o.codigo}} -  {{o.descripcion}}
-                    </label>
-                  </div>
-            </div>
-    </div>
-    <div class="row">
-      <b>Este es un ejemplo de como se visualizaría esta asociación en el mapa:</b><br />
-      <div class="col-md-2">
-        <div class="cuadrito-mapa">
-          <b>{{oaInicial.codigo}}</b>
+    <div class="row" *ngIf="!showLoading">
+        <div class="col-md-6">
+            <button class="btn btn-dark float-end" type="submit" (click)="guardarPosicion()"><i class="bi bi-save"></i> Guardar OA</button>
         </div>
-      </div><br />
-      <div class="row">
-        <div class="col-md-2" *ngFor="let o of oasSeleccionados;">
-        <div class="col-md-2 offset-md-5">
-          <h1>&darr;</h1>
+        <div class="col-md-6">
+            <button mat-button mat-dialog-close class="btn btn-danger" type="button" (click)="cancelar()"><i class="bi bi-x"></i> Cancelar</button>
         </div>
-        <div class="cuadrito-mapa">
-          <b>{{o.codigo}}</b>
-        </div><br />
-      </div>
-      </div>
-        
     </div>
-    <div class="row">
-      <div class="col-md-6">
-        <button class="btn btn-dark float-end" type="submit" (click)="guardarOas()"><i class="bi bi-save"></i> Guardar OA</button>
-      </div>
-      <div class="col-md-6">
-        <button mat-button mat-dialog-close class="btn btn-danger" type="button" (click)="cancelar()"><i class="bi bi-x"></i> Cancelar</button>
-      </div>
-    </div><br />
-    <div class="row">
-      <div class="d-flex justify-content-center"><button mat-button mat-dialog-close class="btn btn-danger" type="button" (click)="deleteAsociaciones(this.id || '')"><i class="bi bi-trash"></i> Eliminar Todos los OAs asociados al OA Actual</button></div>
+    <div *ngIf="showLoading" id="loading"><br /><br /><br /><br /><br />
+      <div class="lds-ring"><div></div><div></div><div></div><div></div></div><br />
+      Cargando...
     </div>
-    </form>
+    <div *ngIf="!showLoading" id="zonamapa" [style.background-image]="'url(' +backgroundMapa +')'">
+        <div class="textoOa" [style.left]="pinchoLeft + 'px'" [style.top]="pinchoTop + 'px'" *ngIf="posicionSeleccionada"><p>{{textoProcesado}}</p></div>
+    </div>
+    
 </div>
