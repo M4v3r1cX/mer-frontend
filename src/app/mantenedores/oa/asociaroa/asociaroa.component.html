@@ -52,6 +52,6 @@
     </div>
     <div *ngIf="!showLoading" id="zonamapa" [style.background-image]="'url(' +backgroundMapa +')'">
         <div class="textoOa" [style.left]="pinchoLeft + 'px'" [style.top]="pinchoTop + 'px'" *ngIf="posicionSeleccionada"><p>{{textoProcesado}}</p></div>
+        <div *ngFor="let oa of oasMapa; let i = index" class="textoOa" [style.left]="xMapa[i] + 'px'" [style.top]="yMapa[i] + 'px'"><p>{{oa.descripcion}}</p></div>
     </div>
-    
 </div>
