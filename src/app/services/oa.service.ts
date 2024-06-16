@@ -89,4 +89,11 @@ import { AsociarOaDTO } from "../models/AsociarOaDTO";
 
       return ret;
     }
+
+    updateTextoOaHijo(id: string, texto: string) {
+      return this.http.post(this.REST_URL + "oa/updateTextoHijo", {
+        id: id,
+        texto: texto
+      });
+    }
   }

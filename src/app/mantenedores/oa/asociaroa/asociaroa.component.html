@@ -38,7 +38,7 @@
             <h1><b>Asociar Objetivos de Aprendizaje</b></h1>
         </div>
     </div>
-    <div class="row" *ngIf="!showLoading">
+    <div class="row" *ngIf="!showLoading && mostrarBotonesGuardar">
         <div class="col-md-6">
             <button class="btn btn-dark float-end" type="submit" (click)="guardarPosicion()"><i class="bi bi-save"></i> Guardar OA</button>
         </div>
@@ -50,8 +50,23 @@
       <div class="lds-ring"><div></div><div></div><div></div><div></div></div><br />
       Cargando...
     </div>
-    <div *ngIf="!showLoading" id="zonamapa" [style.background-image]="'url(' +backgroundMapa +')'">
-        <div class="textoOa" [style.left]="pinchoLeft + 'px'" [style.top]="pinchoTop + 'px'" *ngIf="posicionSeleccionada"><p>{{textoProcesado}}</p></div>
+    <div *ngIf="!showLoading && mostrarMapa" id="zonamapa" [style.background-image]="'url(' +backgroundMapa +')'">
+        <div class="textoOa" [style.left]="pinchoLeft + 'px'" [style.top]="pinchoTop + 'px'" *ngIf="posicionSeleccionada"><p>{{textoProcesado}}<br /><button class="btn btn-dark" (click)="editarTextoOa = true; mostrarMapa = false; mostrarBotonesGuardar = false;"><i class="bi bi-pencil"></i> Editar Texto</button></p></div>
         <div *ngFor="let oa of oasMapa; let i = index" class="textoOa" [style.left]="xMapa[i] + 'px'" [style.top]="yMapa[i] + 'px'"><p>{{oa.descripcion}}</p></div>
+    </div>
+    <div class="editarTextoOa" *ngIf="editarTextoOa">
+        <br />
+        Ingrese el nuevo texto para el Objetivo de Aprendizaje.<br /><br />
+        <textarea rows="4" cols="50" #textAreaTextoOa>
+            {{textoProcesado}}
+        </textarea><br /><br />
+        <div class="row" *ngIf="!showLoading">
+            <div class="col-md-6">
+                <button class="btn btn-dark float-end" (click)="saveNuevoTexto(textAreaTextoOa.value)"><i class="bi bi-save"></i> Guardar</button>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-danger float-start" (click)="editarTextoOa = false; mostrarBotonesGuardar = true; mostrarMapa = true;"><i class="bi bi-x"></i> Cancelar</button>
+            </div>
+        </div>
     </div>
 </div>
