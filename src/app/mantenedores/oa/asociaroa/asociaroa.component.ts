@@ -34,8 +34,6 @@ export class AsociaroaComponent implements AfterViewInit {
   nombreOa: string = "";
   editarTextoOa: boolean = false;
   textoModificado: boolean = false;
-  mostrarMapa: boolean = false;
-  mostrarBotonesGuardar: boolean = true;
 
   ngOnInit() {
     this.loadingVisible = true;
@@ -72,7 +70,6 @@ export class AsociaroaComponent implements AfterViewInit {
     }
     this.showLoading = false;
     this.loadingVisible = false;
-    this.mostrarMapa = true;
   }
 
   ngAfterViewInit() {
@@ -104,8 +101,10 @@ export class AsociaroaComponent implements AfterViewInit {
 
   guardarPosicion() {
     this.loadingVisible = true;
+    console.log(this.textoModificado);
     if (this.textoModificado) {
-
+      this.oaService.updateTextoOaHijo(this.dto.id, this.textoProcesado).subscribe((data: any) => {
+      });;
     }
     this.oaService.guardarPosicionOA(this.dto.id, this.pinchoLeft, this.pinchoTop).subscribe((data: any) => {
       window.location.replace("#/oas");
@@ -135,6 +134,7 @@ export class AsociaroaComponent implements AfterViewInit {
   saveNuevoTexto(value: string) {
     this.textoProcesado = value;
     this.textoModificado = true;
+    this.editarTextoOa = false;
   }
 
 }
