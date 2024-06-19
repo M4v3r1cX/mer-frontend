@@ -33,26 +33,25 @@
     <mat-spinner class="center"></mat-spinner>
   </div>
     <br />
+  <div class="subheader">
     <div class="row">
         <div class="col-md-6">
-            <h1><b>Asociar Objetivos de Aprendizaje</b></h1>
-        </div>
-    </div>
-    <div class="row" *ngIf="!showLoading">
-        <div class="col-md-6">
-            <button class="btn btn-dark float-end" type="submit" (click)="guardarPosicion()"><i class="bi bi-save"></i> Guardar OA</button>
+            <h1><b>Posicionar Objetivo de Aprendizaje</b></h1>
         </div>
         <div class="col-md-6">
-            <button mat-button mat-dialog-close class="btn btn-danger" type="button" (click)="cancelar()"><i class="bi bi-x"></i> Cancelar</button>
+            <button class="btn btn-dark float-end" type="submit" (click)="guardarPosicion()"><i class="bi bi-save"></i> Guardar OA</button><button mat-button mat-dialog-close class="btn btn-danger float-end" type="button" (click)="cancelar()"><i class="bi bi-x"></i> Cancelar</button>
         </div>
     </div>
+  </div>
     <div *ngIf="showLoading" id="loading"><br /><br /><br /><br /><br />
       <div class="lds-ring"><div></div><div></div><div></div><div></div></div><br />
       Cargando...
     </div>
-    <div *ngIf="!showLoading" id="zonamapa" [style.background-image]="'url(' +backgroundMapa +')'">
-        <div class="textoOa" [style.left]="pinchoLeft + 'px'" [style.top]="pinchoTop + 'px'" *ngIf="posicionSeleccionada"><p>{{textoProcesado}}<br /><button class="btn btn-dark" (click)="editarTextoOa = true;"><i class="bi bi-pencil"></i> Editar Texto</button></p></div>
-        <div *ngFor="let oa of oasMapa; let i = index" class="textoOa" [style.left]="xMapa[i] + 'px'" [style.top]="yMapa[i] + 'px'"><p>{{oa.descripcion}}</p></div>
+    <div class="contenedorMapa" *ngIf="!showLoading" >
+        <div id="zonamapa" [style.background-image]="'url(' +backgroundMapa +')'">
+            <div class="textoOa" [style.left]="pinchoLeft + 'px'" [style.top]="pinchoTop + 'px'" *ngIf="posicionSeleccionada"><p>{{textoProcesado}}<br /><button class="btn btn-dark" (click)="editarTextoOa = true;"><i class="bi bi-pencil"></i> Editar Texto</button></p></div>
+            <div *ngFor="let oa of oasMapa; let i = index" class="textoOa" [style.left]="xMapa[i] + 'px'" [style.top]="yMapa[i] + 'px'"><p>{{oa.descripcion}}</p></div>
+        </div>
     </div>
     <div class="editarTextoOaContainerBackground" *ngIf="editarTextoOa">
         <div class="editarTextoOaContainer">
